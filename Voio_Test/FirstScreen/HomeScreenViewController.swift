@@ -38,7 +38,6 @@ class HomeScreenViewController: UIViewController {
         collectionView.delegate = self
         collectionView.register(HomeScreenCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         view.addSubview(collectionView)
-        collectionView.layer.cornerRadius = 15
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -58,30 +57,27 @@ class HomeScreenViewController: UIViewController {
                 default: return self.firstLayoutSection()
 //                return self.thirdLayoutSection()
             }
-       }
+        }
     }
     
     private func firstLayoutSection() -> NSCollectionLayoutSection {
-
-       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:
-    .fractionalHeight(1))
-
-       let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    item.contentInsets.bottom = 15
-
-       let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension:
-    .fractionalWidth(0.5))
-
-       let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-    group.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 2)
-
-       let section = NSCollectionLayoutSection(group: group)
-
-       section.orthogonalScrollingBehavior = .groupPaging
-        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-
-       return section
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),heightDimension: .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets.bottom = 10
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),heightDimension: .fractionalHeight(0.4))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
     }
+    
+    
     
 }
 
@@ -89,16 +85,19 @@ extension HomeScreenViewController: HomeScreenViewModelDelegate {
 }
 
 extension HomeScreenViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return viewModel.firstSectionItems.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HomeScreenCollectionViewCell {
+            cell.imageView.image = UIImage(named: viewModel.firstSectionItems[indexPath.row])
+            return cell
+        }
+        
+        return UICollectionViewCell()
     }
 }
 
 extension HomeScreenViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
+    
 }
