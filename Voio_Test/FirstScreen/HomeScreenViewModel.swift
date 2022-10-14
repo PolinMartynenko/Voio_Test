@@ -36,12 +36,17 @@ class HomeScreenViewModelImplementation: HomeScreenViewModel {
     }
     
     func loadChannels() {
-        let query = GTLRYouTubeQuery_SearchList.query(withPart: "music")
+        let query = GTLRYouTubeQuery_SearchList.query(withPart: "snippet")
         query.maxResults = 4
-
+        query.q = "music"
 
         youTubeServices.executeQuery(query) { ticket, response, error in
-
+            guard let listResponse = response as? GTLRYouTube_SearchListResponse else {
+                print("⭕️ List response has wrong type")
+                return
+            }
+            
+            print(listResponse.items?.compactMap { $0 }.compactMap { $0.snippet?.title })
         }
     }
 }
