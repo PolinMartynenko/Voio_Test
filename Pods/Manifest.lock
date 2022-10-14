@@ -36,10 +36,14 @@ PODS:
   - GTMSessionFetcher/Core (1.7.2)
   - GTMSessionFetcher/Full (1.7.2):
     - GTMSessionFetcher/Core (= 1.7.2)
+  - SDWebImage (5.13.4):
+    - SDWebImage/Core (= 5.13.4)
+  - SDWebImage/Core (5.13.4)
 
 DEPENDENCIES:
   - Google/SignIn (~> 3.0.3)
   - GoogleAPIClientForREST/YouTube (~> 1.2.1)
+  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
@@ -51,6 +55,7 @@ SPEC REPOS:
     - GoogleSignIn
     - GoogleToolboxForMac
     - GTMSessionFetcher
+    - SDWebImage
 
 SPEC CHECKSUMS:
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
@@ -61,7 +66,8 @@ SPEC CHECKSUMS:
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
+  SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
 
-PODFILE CHECKSUM: e05f69c2cba0350b1c12d9ee476b635398d37e2c
+PODFILE CHECKSUM: 445f159f907c49190125419f877eb3e4620f1a9e
 
 COCOAPODS: 1.11.3

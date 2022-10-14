@@ -37,6 +37,7 @@ class HomeScreenViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(HomeScreenCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: GalleryCollectionViewCell.reuseId)
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -111,6 +112,9 @@ class HomeScreenViewController: UIViewController {
 }
 
 extension HomeScreenViewController: HomeScreenViewModelDelegate {
+    func reloadData() {
+        collectionView.reloadData()
+    }
 }
 
 extension HomeScreenViewController: UICollectionViewDataSource {
@@ -130,18 +134,36 @@ extension HomeScreenViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HomeScreenCollectionViewCell {
-            if indexPath.section == 0 {
-                cell.imageView.image = UIImage(named: viewModel.firstSectionItems[indexPath.row])
-            } else if indexPath.section == 1 {
-                cell.imageView.image = UIImage(named: viewModel.secondSectionItems[indexPath.row])
-            } else {
-                cell.imageView.image = UIImage(named: viewModel.thirdSectionItems[indexPath.row])
+        switch indexPath.section {
+        case 0:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCollectionViewCell.reuseId, for: indexPath) as? GalleryCollectionViewCell else {
+                return UICollectionViewCell()
             }
+            guard let snippet = viewModel.firstSectionItems[indexPath.row].snippet else {
+                return cell
+            }
+            
+            cell.setup(snippet)
             return cell
+
+            
+        case 1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HomeScreenCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.imageView.image = UIImage(named: viewModel.secondSectionItems[indexPath.row])
+            return cell
+            
+        case 2:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HomeScreenCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.imageView.image = UIImage(named: viewModel.thirdSectionItems[indexPath.row])
+            return cell
+            
+        default:
+            return UICollectionViewCell()
         }
-        
-        return UICollectionViewCell()
     }
 }
 

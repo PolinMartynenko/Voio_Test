@@ -8,5 +8,6 @@ target 'Voio_Test' do
   # Pods for Voio_Test
 pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
 pod 'Google/SignIn', '~> 3.0.3'
+pod 'SDWebImage', '~> 5.0'
 
 end

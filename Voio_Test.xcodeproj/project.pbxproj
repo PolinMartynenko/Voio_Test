@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		763A8A82BE6124EC398DAB7E /* Pods_Voio_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */; };
+		EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */; };
 		EE81C79A28F85D6000BF3A85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */; };
 		EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */; };
 		EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 		08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voio_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		636220453EBBF9B6B6F6985D /* Pods-Voio_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.debug.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.debug.xcconfig"; sourceTree = "<group>"; };
 		CBD3542FA29DB82094F484AC /* Pods-Voio_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.release.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.release.xcconfig"; sourceTree = "<group>"; };
+		EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEC4B36328F1E9F0008BBD8C /* Voio_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voio_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +74,7 @@
 		EEB5E6F528F3450C00F2803E /* Viewes */ = {
 			isa = PBXGroup;
 			children = (
+				EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */,
 				EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */,
 			);
 			path = Viewes;
@@ -271,6 +274,7 @@
 				EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */,
 				EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */,
 				EEC4B38028F1EBA0008BBD8C /* HomeScreenViewModel.swift in Sources */,
+				EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

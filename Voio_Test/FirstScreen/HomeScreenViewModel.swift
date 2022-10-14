@@ -9,7 +9,7 @@ import Foundation
 import GoogleAPIClientForREST
 
 protocol HomeScreenViewModel {
-    var firstSectionItems: [String] { get }
+    var firstSectionItems: [GTLRYouTube_SearchResult] { get }
     var secondSectionItems: [String] { get }
     var thirdSectionItems: [String] { get }
     
@@ -17,14 +17,14 @@ protocol HomeScreenViewModel {
 }
 
 protocol HomeScreenViewModelDelegate: AnyObject {
-    
+    func reloadData()
 }
 
 class HomeScreenViewModelImplementation: HomeScreenViewModel {
     var model : HomeScreenModel
     weak var delegate : HomeScreenViewModelDelegate?
     var youTubeServices: GTLRYouTubeService
-    var firstSectionItems: [String] = ["1", "2", "3"]
+    var firstSectionItems: [GTLRYouTube_SearchResult] = []
     var secondSectionItems: [String] = ["3", "2", "1", "3"]
     var thirdSectionItems: [String] = ["3", "2", "1", "3"]
     
@@ -40,13 +40,15 @@ class HomeScreenViewModelImplementation: HomeScreenViewModel {
         query.maxResults = 4
         query.q = "music"
 
-        youTubeServices.executeQuery(query) { ticket, response, error in
+        youTubeServices.executeQuery(query) { [weak self] ticket, response, error in
             guard let listResponse = response as? GTLRYouTube_SearchListResponse else {
                 print("⭕️ List response has wrong type")
                 return
             }
             
-            print(listResponse.items?.compactMap { $0 }.compactMap { $0.snippet?.title })
+            self?.firstSectionItems = listResponse.items ?? []
+            
+            self?.delegate?.reloadData()
         }
     }
 }
