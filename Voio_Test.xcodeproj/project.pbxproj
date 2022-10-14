@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		763A8A82BE6124EC398DAB7E /* Pods_Voio_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */; };
+		EE81C79A28F85D6000BF3A85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */; };
 		EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */; };
 		EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */; };
 		EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */; };
@@ -20,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voio_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		636220453EBBF9B6B6F6985D /* Pods-Voio_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.debug.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.debug.xcconfig"; sourceTree = "<group>"; };
+		CBD3542FA29DB82094F484AC /* Pods-Voio_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.release.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.release.xcconfig"; sourceTree = "<group>"; };
+		EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEC4B36328F1E9F0008BBD8C /* Voio_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voio_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,12 +45,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				763A8A82BE6124EC398DAB7E /* Pods_Voio_Test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9545701D42D760A17AA2124E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				636220453EBBF9B6B6F6985D /* Pods-Voio_Test.debug.xcconfig */,
+				CBD3542FA29DB82094F484AC /* Pods-Voio_Test.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A3F518F7CF3AEA289A6796C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EEB5E6F528F3450C00F2803E /* Viewes */ = {
 			isa = PBXGroup;
 			children = (
@@ -56,8 +80,11 @@
 		EEC4B35A28F1E9EF008BBD8C = {
 			isa = PBXGroup;
 			children = (
+				EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */,
 				EEC4B36528F1E9F0008BBD8C /* Voio_Test */,
 				EEC4B36428F1E9F0008BBD8C /* Products */,
+				9545701D42D760A17AA2124E /* Pods */,
+				A3F518F7CF3AEA289A6796C4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,9 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEC4B37728F1E9F3008BBD8C /* Build configuration list for PBXNativeTarget "Voio_Test" */;
 			buildPhases = (
+				6C399309BBD41FBDD5FD83DA /* [CP] Check Pods Manifest.lock */,
 				EEC4B35F28F1E9EF008BBD8C /* Sources */,
 				EEC4B36028F1E9EF008BBD8C /* Frameworks */,
 				EEC4B36128F1E9EF008BBD8C /* Resources */,
+				F11B1414A55062E672A0F1BD /* [CP] Embed Pods Frameworks */,
+				BCEB4885E59D327352158D55 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -162,11 +192,71 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC4B37328F1E9F3008BBD8C /* LaunchScreen.storyboard in Resources */,
+				EE81C79A28F85D6000BF3A85 /* GoogleService-Info.plist in Resources */,
 				EEC4B37028F1E9F3008BBD8C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6C399309BBD41FBDD5FD83DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Voio_Test-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCEB4885E59D327352158D55 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Voio_Test/Pods-Voio_Test-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Voio_Test/Pods-Voio_Test-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Voio_Test/Pods-Voio_Test-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F11B1414A55062E672A0F1BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Voio_Test/Pods-Voio_Test-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Voio_Test/Pods-Voio_Test-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Voio_Test/Pods-Voio_Test-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EEC4B35F28F1E9EF008BBD8C /* Sources */ = {
@@ -316,6 +406,7 @@
 		};
 		EEC4B37828F1E9F3008BBD8C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 636220453EBBF9B6B6F6985D /* Pods-Voio_Test.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -342,6 +433,7 @@
 		};
 		EEC4B37928F1E9F3008BBD8C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBD3542FA29DB82094F484AC /* Pods-Voio_Test.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
