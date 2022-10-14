@@ -30,7 +30,7 @@ class HomeScreenViewController: UIViewController {
         
         view.backgroundColor = .darkBackgroundColor
         setupCollectionView()
-        
+        viewModel.loadChannels()
     }
     
     func setupCollectionView() {
@@ -53,9 +53,8 @@ class HomeScreenViewController: UIViewController {
         return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
             switch sectionNumber {
                 case 0: return self.firstLayoutSection()
-//                case 1: return self.secondLayoutSection()
-                default: return self.firstLayoutSection()
-//                return self.thirdLayoutSection()
+                case 1: return self.secondLayoutSection()
+            default: return self.thirdLayoutSection()
             }
         }
     }
@@ -77,7 +76,37 @@ class HomeScreenViewController: UIViewController {
         return section
     }
     
+    private func secondLayoutSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),heightDimension: .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6),heightDimension: .fractionalHeight(0.2))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = .init(top: 10, leading: 15, bottom: 0, trailing: 0)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
+    }
     
+    private func thirdLayoutSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),heightDimension: .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),heightDimension: .fractionalHeight(0.3))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = .init(top: 10, leading: 15, bottom: 0, trailing: 0)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
+    }
     
 }
 
@@ -85,12 +114,30 @@ extension HomeScreenViewController: HomeScreenViewModelDelegate {
 }
 
 extension HomeScreenViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.firstSectionItems.count
+    func numberOfSections(in: UICollectionView) -> Int {
+        return 3
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("nuber of items\(section)")
+        if section == 0 {
+            return viewModel.firstSectionItems.count
+        } else if section == 1 {
+            return viewModel.secondSectionItems.count
+        } else {
+            return viewModel.thirdSectionItems.count
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HomeScreenCollectionViewCell {
-            cell.imageView.image = UIImage(named: viewModel.firstSectionItems[indexPath.row])
+            if indexPath.section == 0 {
+                cell.imageView.image = UIImage(named: viewModel.firstSectionItems[indexPath.row])
+            } else if indexPath.section == 1 {
+                cell.imageView.image = UIImage(named: viewModel.secondSectionItems[indexPath.row])
+            } else {
+                cell.imageView.image = UIImage(named: viewModel.thirdSectionItems[indexPath.row])
+            }
             return cell
         }
         

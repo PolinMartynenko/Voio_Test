@@ -31,7 +31,6 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
             imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-    
 }
 
 extension UIImageView {
