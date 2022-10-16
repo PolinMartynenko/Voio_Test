@@ -21,7 +21,6 @@ class HomeScreenViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "YouTube API"
@@ -30,7 +29,7 @@ class HomeScreenViewController: UIViewController {
         
         view.backgroundColor = .darkBackgroundColor
         setupCollectionView()
-        viewModel.loadChannels()
+        viewModel.viewDidLoad()
     }
     
     func setupCollectionView() {
@@ -50,11 +49,10 @@ class HomeScreenViewController: UIViewController {
     }
     
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
-
         return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
             switch sectionNumber {
-                case 0: return self.firstLayoutSection()
-                case 1: return self.secondLayoutSection()
+            case 0: return self.firstLayoutSection()
+            case 1: return self.secondLayoutSection()
             default: return self.thirdLayoutSection()
             }
         }
@@ -123,7 +121,6 @@ extension HomeScreenViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("nuber of items\(section)")
         if section == 0 {
             return viewModel.firstSectionItems.count
         } else if section == 1 {
@@ -139,13 +136,10 @@ extension HomeScreenViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCollectionViewCell.reuseId, for: indexPath) as? GalleryCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            guard let snippet = viewModel.firstSectionItems[indexPath.row].snippet else {
-                return cell
-            }
+            let playlistItem = viewModel.firstSectionItems[indexPath.row]
+            cell.setup(playlistItem)
             
-            cell.setup(snippet, subscribersCount: viewModel.getSubscriberCount(for: snippet.channelId))
             return cell
-
             
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HomeScreenCollectionViewCell else {
