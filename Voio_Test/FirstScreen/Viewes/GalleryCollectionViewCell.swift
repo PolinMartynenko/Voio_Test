@@ -15,10 +15,12 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
+    private let subsciberCountLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)
         setupImageView()
+        setupSubscrierCount()
         setupTitle()
     }
     
@@ -32,12 +34,17 @@ class GalleryCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
     
-    func setup(_ snippet: GTLRYouTube_SearchResultSnippet) {
+    func setup(_ snippet: GTLRYouTube_SearchResultSnippet, subscribersCount: Int?) {
         if let path = snippet.thumbnails?.high?.url, let url = URL(string: path) {
             imageView.sd_setImage(with: url, completed: nil)
         }
         
         titleLabel.text = snippet.channelTitle
+        
+        if let subscribersCount = subscribersCount {
+            subsciberCountLabel.text = "\(subscribersCount) подписчика"
+        }
+        
     }
     
     private func setupImageView() {
@@ -61,7 +68,20 @@ class GalleryCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
             titleLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10),
-            titleLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -20)
+            titleLabel.bottomAnchor.constraint(equalTo: subsciberCountLabel.topAnchor)
+        ])
+    }
+    
+    func setupSubscrierCount() {
+        subsciberCountLabel.textColor = .white
+        subsciberCountLabel.backgroundColor = .black
+        subsciberCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(subsciberCountLabel)
+        
+        NSLayoutConstraint.activate([
+            subsciberCountLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
+            subsciberCountLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10),
+            subsciberCountLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -20)
         ])
     }
 }

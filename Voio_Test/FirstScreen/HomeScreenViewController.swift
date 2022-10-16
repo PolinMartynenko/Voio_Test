@@ -143,7 +143,7 @@ extension HomeScreenViewController: UICollectionViewDataSource {
                 return cell
             }
             
-            cell.setup(snippet)
+            cell.setup(snippet, subscribersCount: viewModel.getSubscriberCount(for: snippet.channelId))
             return cell
 
             
