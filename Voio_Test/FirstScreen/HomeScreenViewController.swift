@@ -142,10 +142,12 @@ extension HomeScreenViewController: UICollectionViewDataSource {
             return cell
             
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HomeScreenCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCollectionViewCell.reuseId, for: indexPath) as? GalleryCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.imageView.image = UIImage(named: viewModel.secondSectionItems[indexPath.row])
+            let secondListItem = viewModel.secondSectionItems[indexPath.row]
+            cell.setup(secondListItem)
+//            cell.imageView.image = UIImage(named: viewModel.secondSectionItems[indexPath.row])
             return cell
             
         case 2:
