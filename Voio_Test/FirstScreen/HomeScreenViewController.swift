@@ -35,8 +35,10 @@ class HomeScreenViewController: UIViewController {
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.backgroundColor = .darkBackgroundColor
         collectionView.register(HomeScreenCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: GalleryCollectionViewCell.reuseId)
+        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -46,6 +48,17 @@ class HomeScreenViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
         ])
         collectionView.collectionViewLayout = createCompositionalLayout()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
+        
+        
+        
+        header.configure()
+        return header
+        
+        
     }
     
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
@@ -87,6 +100,9 @@ class HomeScreenViewController: UIViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerElement]
         
         return section
     }
@@ -103,6 +119,10 @@ class HomeScreenViewController: UIViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerElement]
         
         return section
     }
@@ -147,7 +167,6 @@ extension HomeScreenViewController: UICollectionViewDataSource {
             }
             let secondListItem = viewModel.secondSectionItems[indexPath.row]
             cell.setup(secondListItem)
-//            cell.imageView.image = UIImage(named: viewModel.secondSectionItems[indexPath.row])
             return cell
             
         case 2:
