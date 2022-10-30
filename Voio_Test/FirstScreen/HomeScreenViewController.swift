@@ -11,6 +11,8 @@ class HomeScreenViewController: UIViewController {
     
     let viewModel: HomeScreenViewModel
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    let playerButton = UIButton()
+    
     
     init(viewModel:HomeScreenViewModel) {
         self.viewModel = viewModel
@@ -29,8 +31,45 @@ class HomeScreenViewController: UIViewController {
         
         view.backgroundColor = .darkBackgroundColor
         setupCollectionView()
+        setupPlayerButton()
         viewModel.viewDidLoad()
     }
+    
+    func setupPlayerButton() {
+        playerButton.backgroundColor = .pinkColor
+        playerButton.layer.cornerRadius = 10
+        playerButton.setImage(UIImage(named: "Close&Open"), for: .normal)
+        view.addSubview(playerButton)
+        playerButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
+        playerButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            playerButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
+            playerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            playerButton.heightAnchor.constraint(equalToConstant: 45),
+            playerButton.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+        
+        playerButton.setNeedsLayout()
+        playerButton.layoutIfNeeded()
+    }
+    
+    @objc func playerButtonTouched(_ playerButton: UIButton){
+        let playerVC = PlayerScreenModule.build()
+        present(playerVC, animated: true, completion: nil)
+        print("Touched")
+    }
+    
+    //    func showMyViewControllerInACustomizedSheet() {
+    //        let viewControllerToPresent = MyViewController()
+    //        if let sheet = viewControllerToPresent.sheetPresentationController {
+    //            sheet.detents = [.medium(), .large()]
+    //            sheet.largestUndimmedDetentIdentifier = .medium
+    //            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+    //            sheet.prefersEdgeAttachedInCompactHeight = true
+    //            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+    //        }
+    //        present(viewControllerToPresent, animated: true, completion: nil)
+    //    }
     
     func setupCollectionView() {
         collectionView.dataSource = self
@@ -51,8 +90,7 @@ class HomeScreenViewController: UIViewController {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
         collectionView.collectionViewLayout = createCompositionalLayout()
     }

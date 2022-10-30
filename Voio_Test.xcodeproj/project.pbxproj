@@ -15,6 +15,10 @@
 		EEBE6302290DAC7800EA49FD /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6301290DAC7800EA49FD /* HeaderCollectionReusableView.swift */; };
 		EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6303290DCAFE00EA49FD /* SecondCollectionViewCell.swift */; };
 		EEBE6306290E838F00EA49FD /* ThirdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6305290E838F00EA49FD /* ThirdCollectionViewCell.swift */; };
+		EEBE6309290EBB7C00EA49FD /* PlayerScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6308290EBB7C00EA49FD /* PlayerScreenModule.swift */; };
+		EEBE630B290EBB9400EA49FD /* PlayerScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE630A290EBB9400EA49FD /* PlayerScreenModel.swift */; };
+		EEBE630D290EBBA800EA49FD /* PlayerScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE630C290EBBA800EA49FD /* PlayerScreenViewModel.swift */; };
+		EEBE630F290EBBBB00EA49FD /* PlayerScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE630E290EBBBB00EA49FD /* PlayerScreenViewController.swift */; };
 		EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */; };
 		EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */; };
 		EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36A28F1E9F0008BBD8C /* HomeScreenViewController.swift */; };
@@ -37,6 +41,10 @@
 		EEBE6301290DAC7800EA49FD /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		EEBE6303290DCAFE00EA49FD /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEBE6305290E838F00EA49FD /* ThirdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCollectionViewCell.swift; sourceTree = "<group>"; };
+		EEBE6308290EBB7C00EA49FD /* PlayerScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScreenModule.swift; sourceTree = "<group>"; };
+		EEBE630A290EBB9400EA49FD /* PlayerScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScreenModel.swift; sourceTree = "<group>"; };
+		EEBE630C290EBBA800EA49FD /* PlayerScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScreenViewModel.swift; sourceTree = "<group>"; };
+		EEBE630E290EBBBB00EA49FD /* PlayerScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScreenViewController.swift; sourceTree = "<group>"; };
 		EEC4B36328F1E9F0008BBD8C /* Voio_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voio_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +99,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		EEBE6307290EBAFB00EA49FD /* PlayerScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EEBE630E290EBBBB00EA49FD /* PlayerScreenViewController.swift */,
+				EEBE630C290EBBA800EA49FD /* PlayerScreenViewModel.swift */,
+				EEBE630A290EBB9400EA49FD /* PlayerScreenModel.swift */,
+				EEBE6308290EBB7C00EA49FD /* PlayerScreenModule.swift */,
+			);
+			path = PlayerScreen;
+			sourceTree = "<group>";
+		};
 		EEC4B35A28F1E9EF008BBD8C = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +136,7 @@
 				EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */,
 				EEC4B38328F1FBAD008BBD8C /* Extension */,
 				EEC4B37A28F1EB5C008BBD8C /* FirstScreen */,
+				EEBE6307290EBAFB00EA49FD /* PlayerScreen */,
 				EEC4B36F28F1E9F3008BBD8C /* Assets.xcassets */,
 				EEC4B37128F1E9F3008BBD8C /* LaunchScreen.storyboard */,
 				EEC4B37428F1E9F3008BBD8C /* Info.plist */,
@@ -278,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEBE6309290EBB7C00EA49FD /* PlayerScreenModule.swift in Sources */,
 				EEC4B37C28F1EB7B008BBD8C /* HomeScreenModule.swift in Sources */,
 				EEBE6302290DAC7800EA49FD /* HeaderCollectionReusableView.swift in Sources */,
 				EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */,
@@ -288,9 +309,12 @@
 				EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */,
 				EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */,
 				EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */,
+				EEBE630B290EBB9400EA49FD /* PlayerScreenModel.swift in Sources */,
+				EEBE630F290EBBBB00EA49FD /* PlayerScreenViewController.swift in Sources */,
 				EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */,
 				EEC4B38028F1EBA0008BBD8C /* HomeScreenViewModel.swift in Sources */,
 				EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */,
+				EEBE630D290EBBA800EA49FD /* PlayerScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
