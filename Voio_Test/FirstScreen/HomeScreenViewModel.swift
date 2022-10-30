@@ -34,13 +34,23 @@ class HomeScreenViewModelImplementation: HomeScreenViewModel {
     
     func viewDidLoad() {
         model.loadPlaylist()
+        model.loadSecondPlaylist()
+        model.loadThirdPlaylist()
     }
 }
 
 extension HomeScreenViewModelImplementation : HomeScreenModelDelegate {
     func didLoadPlaylist(_ items: [PlaylistlItem]) {
         self.firstSectionItems = items
+        delegate?.reloadData()
+    }
+    
+    func didLoadSecondPlaylist(_ items: [PlaylistlItem]) {
         self.secondSectionItems = items
+        delegate?.reloadData()
+    }
+    
+    func didLoadThirdPlaylist(_ items: [PlaylistlItem]) {
         self.thirdSectionItems = items
         delegate?.reloadData()
     }

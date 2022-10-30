@@ -22,7 +22,6 @@ class ThirdCollectionViewCell: UICollectionViewCell {
         setupImageView()
         setupTitle()
         setupSubscrierCount()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -42,6 +41,7 @@ class ThirdCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupImageView() {
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.makeRounded()
         self.addSubview(imageView)
