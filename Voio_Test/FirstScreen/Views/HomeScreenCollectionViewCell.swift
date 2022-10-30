@@ -10,6 +10,7 @@ import UIKit
 
 class HomeScreenCollectionViewCell: UICollectionViewCell {
     var imageView = UIImageView()
+    
 
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)

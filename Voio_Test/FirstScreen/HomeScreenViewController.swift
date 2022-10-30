@@ -36,11 +36,16 @@ class HomeScreenViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .darkBackgroundColor
+        
         collectionView.register(HomeScreenCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: GalleryCollectionViewCell.reuseId)
         collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
+        collectionView.register(SecondCollectionViewCell.self, forCellWithReuseIdentifier: "cellSecond")
+        collectionView.register(SecondCollectionViewCell.self, forCellWithReuseIdentifier: "second_cell")
+        
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
@@ -52,13 +57,9 @@ class HomeScreenViewController: UIViewController {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
-        
-        
-        
+    
         header.configure()
         return header
-        
-        
     }
     
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
@@ -93,10 +94,10 @@ class HomeScreenViewController: UIViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6),heightDimension: .fractionalHeight(0.2))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6),heightDimension: .fractionalHeight(0.3))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = .init(top: 10, leading: 15, bottom: 0, trailing: 0)
+        group.contentInsets = .init(top: 12, leading: 15, bottom: 0, trailing: 0)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
@@ -162,7 +163,7 @@ extension HomeScreenViewController: UICollectionViewDataSource {
             return cell
             
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCollectionViewCell.reuseId, for: indexPath) as? GalleryCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SecondCollectionViewCell.reuseId, for: indexPath) as? SecondCollectionViewCell else {
                 return UICollectionViewCell()
             }
             let secondListItem = viewModel.secondSectionItems[indexPath.row]

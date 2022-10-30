@@ -13,6 +13,8 @@
 		EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE880C8828FC45450030C91B /* PlaylistlItem.swift */; };
 		EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */; };
 		EEBE6302290DAC7800EA49FD /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6301290DAC7800EA49FD /* HeaderCollectionReusableView.swift */; };
+		EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6303290DCAFE00EA49FD /* SecondCollectionViewCell.swift */; };
+		EEBE6306290E838F00EA49FD /* ThirdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6305290E838F00EA49FD /* ThirdCollectionViewCell.swift */; };
 		EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */; };
 		EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */; };
 		EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36A28F1E9F0008BBD8C /* HomeScreenViewController.swift */; };
@@ -33,6 +35,8 @@
 		EE880C8828FC45450030C91B /* PlaylistlItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistlItem.swift; sourceTree = "<group>"; };
 		EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEBE6301290DAC7800EA49FD /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		EEBE6303290DCAFE00EA49FD /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
+		EEBE6305290E838F00EA49FD /* ThirdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEC4B36328F1E9F0008BBD8C /* Voio_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voio_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */,
+				EEBE6303290DCAFE00EA49FD /* SecondCollectionViewCell.swift */,
+				EEBE6305290E838F00EA49FD /* ThirdCollectionViewCell.swift */,
 				EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */,
 				EEBE6301290DAC7800EA49FD /* HeaderCollectionReusableView.swift */,
 			);
@@ -276,10 +282,12 @@
 				EEBE6302290DAC7800EA49FD /* HeaderCollectionReusableView.swift in Sources */,
 				EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */,
 				EEC4B38528F1FD0C008BBD8C /* UIColorExtension.swift in Sources */,
+				EEBE6306290E838F00EA49FD /* ThirdCollectionViewCell.swift in Sources */,
 				EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */,
 				EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */,
 				EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */,
 				EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */,
+				EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */,
 				EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */,
 				EEC4B38028F1EBA0008BBD8C /* HomeScreenViewModel.swift in Sources */,
 				EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */,
