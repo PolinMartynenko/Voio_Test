@@ -11,7 +11,7 @@ import GoogleAPIClientForREST
 protocol HomeScreenViewModel {
     var firstSectionItems: [PlaylistlItem] { get }
     var secondSectionItems: [PlaylistlItem] { get }
-    var thirdSectionItems: [String] { get }
+    var thirdSectionItems: [PlaylistlItem] { get }
     
     func viewDidLoad()
 }
@@ -26,7 +26,7 @@ class HomeScreenViewModelImplementation: HomeScreenViewModel {
     weak var delegate : HomeScreenViewModelDelegate?
     var firstSectionItems: [PlaylistlItem] = []
     var secondSectionItems: [PlaylistlItem] = []
-    var thirdSectionItems: [String] = ["3", "2", "1", "3"]
+    var thirdSectionItems: [PlaylistlItem] = []
     
     init(model: HomeScreenModel) {
         self.model = model
@@ -41,6 +41,7 @@ extension HomeScreenViewModelImplementation : HomeScreenModelDelegate {
     func didLoadPlaylist(_ items: [PlaylistlItem]) {
         self.firstSectionItems = items
         self.secondSectionItems = items
+        self.thirdSectionItems = items
         delegate?.reloadData()
     }
 }

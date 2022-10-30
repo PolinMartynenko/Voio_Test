@@ -37,11 +37,13 @@ class HomeScreenViewController: UIViewController {
         collectionView.delegate = self
         collectionView.backgroundColor = .darkBackgroundColor
         
-        collectionView.register(HomeScreenCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: GalleryCollectionViewCell.reuseId)
+        
         collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
-        collectionView.register(SecondCollectionViewCell.self, forCellWithReuseIdentifier: "cellSecond")
-        collectionView.register(SecondCollectionViewCell.self, forCellWithReuseIdentifier: "second_cell")
+        
+        collectionView.register(SecondCollectionViewCell.self, forCellWithReuseIdentifier: SecondCollectionViewCell.reuseId)
+        
+        collectionView.register(ThirdCollectionViewCell.self, forCellWithReuseIdentifier: ThirdCollectionViewCell.reuseId)
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -94,10 +96,10 @@ class HomeScreenViewController: UIViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6),heightDimension: .fractionalHeight(0.3))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),heightDimension: .fractionalHeight(0.3))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = .init(top: 12, leading: 15, bottom: 0, trailing: 0)
+        group.contentInsets = .init(top: 10, leading: 15, bottom: 0, trailing: 0)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
@@ -113,10 +115,10 @@ class HomeScreenViewController: UIViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),heightDimension: .fractionalHeight(0.3))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),heightDimension: .fractionalHeight(0.4))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = .init(top: 10, leading: 15, bottom: 0, trailing: 0)
+        group.contentInsets = .init(top: 11, leading: 15, bottom: 0, trailing: 0)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
@@ -171,10 +173,11 @@ extension HomeScreenViewController: UICollectionViewDataSource {
             return cell
             
         case 2:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HomeScreenCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThirdCollectionViewCell.reuseId, for: indexPath) as? ThirdCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.imageView.image = UIImage(named: viewModel.thirdSectionItems[indexPath.row])
+            let thirdListItem = viewModel.thirdSectionItems[indexPath.row]
+            cell.setup(thirdListItem)
             return cell
             
         default:
