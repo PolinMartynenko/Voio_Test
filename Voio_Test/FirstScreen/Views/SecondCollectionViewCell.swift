@@ -43,6 +43,7 @@ class SecondCollectionViewCell: UICollectionViewCell {
     
     private func setupImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
         imageView.makeRounded()
         self.addSubview(imageView)
         NSLayoutConstraint.activate([

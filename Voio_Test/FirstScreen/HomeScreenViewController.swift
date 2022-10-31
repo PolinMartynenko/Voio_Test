@@ -38,7 +38,7 @@ class HomeScreenViewController: UIViewController {
     func setupPlayerButton() {
         playerButton.backgroundColor = .pinkColor
         playerButton.layer.cornerRadius = 10
-        playerButton.setImage(UIImage(named: "Close&Open"), for: .normal)
+        playerButton.setImage(UIImage(named: "Close&Open-1"), for: .normal)
         view.addSubview(playerButton)
         playerButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
         playerButton.translatesAutoresizingMaskIntoConstraints = false

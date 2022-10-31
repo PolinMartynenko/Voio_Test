@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		763A8A82BE6124EC398DAB7E /* Pods_Voio_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */; };
+		EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */; };
 		EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */; };
 		EE81C79A28F85D6000BF3A85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */; };
 		EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE880C8828FC45450030C91B /* PlaylistlItem.swift */; };
@@ -34,6 +35,7 @@
 		08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voio_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		636220453EBBF9B6B6F6985D /* Pods-Voio_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.debug.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.debug.xcconfig"; sourceTree = "<group>"; };
 		CBD3542FA29DB82094F484AC /* Pods-Voio_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.release.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.release.xcconfig"; sourceTree = "<group>"; };
+		EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundExtension.swift; sourceTree = "<group>"; };
 		EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE880C8828FC45450030C91B /* PlaylistlItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistlItem.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				EEC4B38428F1FD0C008BBD8C /* UIColorExtension.swift */,
+				EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */,
 				EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */,
 				EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */,
+				EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */,
 				EEBE630B290EBB9400EA49FD /* PlayerScreenModel.swift in Sources */,
 				EEBE630F290EBBBB00EA49FD /* PlayerScreenViewController.swift in Sources */,
 				EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */,
@@ -456,6 +460,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BB6356MAF8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Voio_Test/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -483,6 +488,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BB6356MAF8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Voio_Test/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

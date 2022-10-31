@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import youtube_ios_player_helper
+import MediaPlayer
 
 class PlayerScreenViewController: UIViewController {
     
@@ -17,6 +18,13 @@ class PlayerScreenViewController: UIViewController {
     let verticalStackView = UIStackView()
     let titleVideo = UILabel()
     let subscribersLabel = UILabel()
+    let sliderForVideo = UISlider()
+    let horizontalStackView = UIStackView()
+    let pastVieoButton = UIButton()
+    let pauseVideoButton = UIButton()
+    let nextVideoButton = UIButton()
+    var isVideoPlaying = Bool()
+    var sliderForSound = UISlider()
     
 
     init(viewModel: PlayerScreenViewModel) {
@@ -34,14 +42,14 @@ class PlayerScreenViewController: UIViewController {
         setupPlayerButton()
         setupPlayerLabel()
         setupVerticalStackView()
+        setupHorizontalStackView()
+        setupSliderForSound()
         
         guard let videoId = viewModel.playListItem.playlist.identifier?.videoId else {
             return
         }
         
         playerView.load(withVideoId: videoId)
-        playerView.playVideo()
-        
     }
     
     func setGradientBackground() {
@@ -97,36 +105,130 @@ class PlayerScreenViewController: UIViewController {
         view.addSubview(verticalStackView)
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            verticalStackView.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 30),
+            verticalStackView.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 50),
             verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             verticalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
         ])
         
+        setupSliderForVideo()
         setupTitleVideoLabel()
         setupSubscribersLabel()
         
     }
     
+    private func setupSliderForVideo() {
+        sliderForVideo.frame = CGRect(x: 0, y: 0, width: 100, height: 23)
+        sliderForVideo.minimumValue = 0
+        sliderForVideo.maximumValue = 100
+        sliderForVideo.isContinuous = true
+        sliderForVideo.tintColor = .white
+        sliderForVideo.addTarget(self, action: #selector(changeSliderForVideo), for: .valueChanged)
+        verticalStackView.addArrangedSubview(sliderForVideo)
+        sliderForVideo.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sliderForVideo.heightAnchor.constraint(equalToConstant: 10),
+            sliderForVideo.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor)
+        ])
+    }
+    
+    @objc func changeSliderForVideo(sender: UISlider){
+        print("change")
+    }
+    
+    
     private func setupTitleVideoLabel() {
-        titleVideo.text = "fkvjd"
+        titleVideo.text = viewModel.playListItem.playlist.snippet?.channelTitle
+        titleVideo.font = .boldSystemFont(ofSize: 30)
         titleVideo.textColor = .white
         titleVideo.translatesAutoresizingMaskIntoConstraints = false
         verticalStackView.addArrangedSubview(titleVideo)
     }
     
     private func setupSubscribersLabel() {
-        subscribersLabel.text = "fdg"
+        if let subscribersCount =  viewModel.playListItem.channelInfo.statistics?.subscriberCount {
+            subscribersLabel.text = "\(subscribersCount) подписчика" }
         subscribersLabel.textColor = .white
         subscribersLabel.translatesAutoresizingMaskIntoConstraints = false
         verticalStackView.addArrangedSubview(subscribersLabel)
     }
     
+    private func setupHorizontalStackView() {
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.spacing = 40
+        horizontalStackView.alignment = .center
+        horizontalStackView.distribution = .equalCentering
+        view.addSubview(horizontalStackView)
+        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            horizontalStackView.topAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: 40),
+            horizontalStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        setupPastVideoButton()
+        setupPauseVideoButton()
+        setupNextVideoButton()
+        
+    }
+    
+    private func setupPastVideoButton() {
+        horizontalStackView.addArrangedSubview(pastVieoButton)
+        pastVieoButton.setImage(UIImage(named: "Prev"), for: .normal)
+//        pastVieoButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
+        pastVieoButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupPauseVideoButton() {
+        horizontalStackView.addArrangedSubview(pauseVideoButton)
+        pauseVideoButton.setImage(UIImage(named: "Play"), for: .normal)
+        pauseVideoButton.addTarget(self, action: #selector(self.playPauseButtonTouched), for: .touchUpInside)
+        pauseVideoButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @objc func playPauseButtonTouched(_ playerPauseButton: UIButton){
+        if isVideoPlaying {
+            playerView.pauseVideo()
+            isVideoPlaying = false
+            pauseVideoButton.setImage(UIImage(named: "Play"), for: .normal)
+        } else {
+            playerView.playVideo()
+            isVideoPlaying = true
+            pauseVideoButton.setImage(UIImage(named: "Pause"), for: .normal)
+        }
+        print("Touched")
+    }
+    
+    private func setupNextVideoButton() {
+        horizontalStackView.addArrangedSubview(nextVideoButton)
+        nextVideoButton.setImage(UIImage(named: "Next"), for: .normal)
+//        pastVieoButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
+        nextVideoButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupSliderForSound() {
+        sliderForSound.frame = CGRect(x: 0, y: 0, width: 80, height: 23)
+        sliderForSound.minimumValueImage = UIImage(named: "Sound_Min")
+        sliderForSound.maximumValueImage = UIImage(named: "Sound_Max")
+        sliderForSound.isContinuous = true
+        sliderForSound.tintColor = .white
+        sliderForSound.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
+        view.addSubview(sliderForSound)
+        sliderForSound.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sliderForSound.topAnchor.constraint(equalTo: horizontalStackView.bottomAnchor, constant: 25),
+            sliderForSound.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            sliderForSound.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            sliderForSound.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60)
+        ])
+        
+    }
+
+    @objc func changeSlider(sender: UISlider){
+        MPVolumeView.setVolume(sender.value)
+    }
+    
 }
-
-
 
 extension PlayerScreenViewController: PlayerScreenViewModelDelegate {
     
 }
-
 
