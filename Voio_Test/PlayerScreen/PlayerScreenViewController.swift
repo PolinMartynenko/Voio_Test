@@ -53,6 +53,8 @@ class PlayerScreenViewController: UIViewController {
         }
         
         playerView.load(withVideoId: videoId)
+        
+        viewModel.viewDidLoad()
     }
     
     func setGradientBackground() {
@@ -169,7 +171,6 @@ class PlayerScreenViewController: UIViewController {
     }
     
     private func setupFinishTimeLabel() {
-        finishTimeLebel.text = "bkjdf"
         finishTimeLebel.textColor = .white
         finishTimeLebel.translatesAutoresizingMaskIntoConstraints = false
         timeStackView.addArrangedSubview(finishTimeLebel)
@@ -268,6 +269,14 @@ class PlayerScreenViewController: UIViewController {
 }
 
 extension PlayerScreenViewController: PlayerScreenViewModelDelegate {
-    
+    func displayVideoData(_ videoData: VideoData) {
+        guard let duration = videoData.data.contentDetails?.duration else {
+            return
+        }
+        
+        let components = duration.components(separatedBy: .letters)
+        
+        finishTimeLebel.text = components.joined(separator: ":")
+    }
 }
 

@@ -11,10 +11,11 @@ import UIKit
 
 protocol PlayerScreenViewModel {
     var playListItem: PlaylistlItem { get }
+    func viewDidLoad()
 }
 
 protocol PlayerScreenViewModelDelegate: AnyObject {
-    
+    func displayVideoData(_ videoData: VideoData)
 }
 
 class PlayerScreenViewModelImplementation: PlayerScreenViewModel {
@@ -26,8 +27,14 @@ class PlayerScreenViewModelImplementation: PlayerScreenViewModel {
         self.model = model
         self.playListItem = playListItem
     }
+    
+    func viewDidLoad() {
+        model.loadVideoData(playListItem)
+    }
 }
 
 extension PlayerScreenViewModelImplementation: PlayerScreenModelDelegate {
-    
+    func didLoadVideoData(_ videoData: VideoData) {
+        delegate?.displayVideoData(videoData)
+    }
 }

@@ -50,7 +50,6 @@ class SecondCollectionViewCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
