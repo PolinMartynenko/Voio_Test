@@ -7,12 +7,17 @@
 
 import Foundation
 import UIKit
+import youtube_ios_player_helper
 
 class PlayerScreenViewController: UIViewController {
     
     let viewModel : PlayerScreenViewModel
     let playerButton = UIButton()
-    let playerLabel = UILabel()
+    let playerView = YTPlayerView()
+    let verticalStackView = UIStackView()
+    let titleVideo = UILabel()
+    let subscribersLabel = UILabel()
+    
 
     init(viewModel: PlayerScreenViewModel) {
         self.viewModel = viewModel
@@ -28,6 +33,14 @@ class PlayerScreenViewController: UIViewController {
         setGradientBackground()
         setupPlayerButton()
         setupPlayerLabel()
+        setupVerticalStackView()
+        
+        guard let videoId = viewModel.playListItem.playlist.identifier?.videoId else {
+            return
+        }
+        
+        playerView.load(withVideoId: videoId)
+        playerView.playVideo()
         
     }
     
@@ -66,15 +79,46 @@ class PlayerScreenViewController: UIViewController {
     }
     
     private func setupPlayerLabel() {
-        playerLabel.backgroundColor = .darkBackgroundColor
-        view.addSubview(playerLabel)
-        playerLabel.translatesAutoresizingMaskIntoConstraints = false
+        playerView.backgroundColor = .darkBackgroundColor
+        view.addSubview(playerView)
+        playerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            playerLabel.topAnchor.constraint(equalTo: playerButton.bottomAnchor),
-            playerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            playerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            playerLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -460)
+            playerView.topAnchor.constraint(equalTo: playerButton.bottomAnchor),
+            playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            playerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            playerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -460)
         ])
+    }
+    
+    private func setupVerticalStackView() {
+        verticalStackView.axis = .vertical
+        verticalStackView.spacing = 15
+        verticalStackView.alignment = .center
+        view.addSubview(verticalStackView)
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            verticalStackView.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 30),
+            verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            verticalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+        ])
+        
+        setupTitleVideoLabel()
+        setupSubscribersLabel()
+        
+    }
+    
+    private func setupTitleVideoLabel() {
+        titleVideo.text = "fkvjd"
+        titleVideo.textColor = .white
+        titleVideo.translatesAutoresizingMaskIntoConstraints = false
+        verticalStackView.addArrangedSubview(titleVideo)
+    }
+    
+    private func setupSubscribersLabel() {
+        subscribersLabel.text = "fdg"
+        subscribersLabel.textColor = .white
+        subscribersLabel.translatesAutoresizingMaskIntoConstraints = false
+        verticalStackView.addArrangedSubview(subscribersLabel)
     }
     
 }

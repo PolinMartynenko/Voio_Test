@@ -9,5 +9,6 @@ target 'Voio_Test' do
 pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
 pod 'Google/SignIn', '~> 3.0.3'
 pod 'SDWebImage', '~> 5.0'
+pod "youtube-ios-player-helper"
 
 end

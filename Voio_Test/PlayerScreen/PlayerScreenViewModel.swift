@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol PlayerScreenViewModel {
-    
+    var playListItem: PlaylistlItem { get }
 }
 
 protocol PlayerScreenViewModelDelegate: AnyObject {
@@ -18,13 +18,14 @@ protocol PlayerScreenViewModelDelegate: AnyObject {
 }
 
 class PlayerScreenViewModelImplementation: PlayerScreenViewModel {
+    var playListItem: PlaylistlItem
     var model: PlayerScreenModel
     weak var delegate: PlayerScreenViewModelDelegate?
     
-    init(model:PlayerScreenModel){
+    init(model:PlayerScreenModel, playListItem: PlaylistlItem) {
         self.model = model
+        self.playListItem = playListItem
     }
-    
 }
 
 extension PlayerScreenViewModelImplementation: PlayerScreenModelDelegate {

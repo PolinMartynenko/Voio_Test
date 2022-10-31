@@ -9,7 +9,7 @@ import UIKit
 
 class HomeScreenViewController: UIViewController {
     
-    let viewModel: HomeScreenViewModel
+    var viewModel: HomeScreenViewModel
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     let playerButton = UIButton()
     
@@ -54,22 +54,14 @@ class HomeScreenViewController: UIViewController {
     }
     
     @objc func playerButtonTouched(_ playerButton: UIButton){
-        let playerVC = PlayerScreenModule.build()
+        guard let item = viewModel.selectedItem else {
+            return
+        }
+        
+        let playerVC = PlayerScreenModule.build(item)
         present(playerVC, animated: true, completion: nil)
         print("Touched")
     }
-    
-    //    func showMyViewControllerInACustomizedSheet() {
-    //        let viewControllerToPresent = MyViewController()
-    //        if let sheet = viewControllerToPresent.sheetPresentationController {
-    //            sheet.detents = [.medium(), .large()]
-    //            sheet.largestUndimmedDetentIdentifier = .medium
-    //            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-    //            sheet.prefersEdgeAttachedInCompactHeight = true
-    //            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-    //        }
-    //        present(viewControllerToPresent, animated: true, completion: nil)
-    //    }
     
     func setupCollectionView() {
         collectionView.dataSource = self
@@ -225,5 +217,26 @@ extension HomeScreenViewController: UICollectionViewDataSource {
 }
 
 extension HomeScreenViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var item: PlaylistlItem?
+        switch indexPath.section {
+        case 0:
+            item = viewModel.firstSectionItems[indexPath.row]
+        case 1:
+            item = viewModel.secondSectionItems[indexPath.row]
+        case 2:
+            item = viewModel.thirdSectionItems[indexPath.row]
+        default:
+            break
+        }
+        
+        viewModel.selectedItem = item
+        
+        guard let item = viewModel.selectedItem else {
+            return
+        }
+        
+        let playerVC = PlayerScreenModule.build(item)
+        present(playerVC, animated: true, completion: nil)
+    }
 }

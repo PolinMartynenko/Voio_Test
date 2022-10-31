@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class PlayerScreenModule {
-    static func build() -> UIViewController {
+    static func build(_ item: PlaylistlItem) -> UIViewController {
         let model = PlayerScreenModelImplementation()
-        let viewModel = PlayerScreenViewModelImplementation(model: model)
+        let viewModel = PlayerScreenViewModelImplementation(model: model, playListItem: item)
         let vc = PlayerScreenViewController(viewModel: viewModel)
         viewModel.delegate = vc
         model.delegate = viewModel
