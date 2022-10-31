@@ -19,6 +19,9 @@ class PlayerScreenViewController: UIViewController {
     let titleVideo = UILabel()
     let subscribersLabel = UILabel()
     let sliderForVideo = UISlider()
+    let timeStackView = UIStackView()
+    let startTimeLabel = UILabel()
+    let finishTimeLebel = UILabel()
     let horizontalStackView = UIStackView()
     let pastVieoButton = UIButton()
     let pauseVideoButton = UIButton()
@@ -111,6 +114,7 @@ class PlayerScreenViewController: UIViewController {
         ])
         
         setupSliderForVideo()
+        setupTimeStackView()
         setupTitleVideoLabel()
         setupSubscribersLabel()
         
@@ -131,7 +135,7 @@ class PlayerScreenViewController: UIViewController {
             sliderForVideo.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor)
         ])
         
-        verticalStackView.setCustomSpacing(40, after: sliderForVideo)
+        verticalStackView.setCustomSpacing(20, after: sliderForVideo)
         
     }
     
@@ -139,6 +143,37 @@ class PlayerScreenViewController: UIViewController {
         print("change")
     }
     
+    
+    private func setupTimeStackView() {
+        timeStackView.axis = .horizontal
+        timeStackView.spacing = 15
+        timeStackView.alignment = .center
+        timeStackView.distribution = .equalCentering
+        verticalStackView.addArrangedSubview(timeStackView)
+        timeStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            timeStackView.heightAnchor.constraint(equalToConstant: 15),
+            timeStackView.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor)
+        ])
+        
+        setupStartTimeLabel()
+        setupFinishTimeLabel()
+        
+    }
+    
+    private func setupStartTimeLabel() {
+        startTimeLabel.text = "0:0"
+        startTimeLabel.textColor = .white
+        startTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        timeStackView.addArrangedSubview(startTimeLabel)
+    }
+    
+    private func setupFinishTimeLabel() {
+        finishTimeLebel.text = "bkjdf"
+        finishTimeLebel.textColor = .white
+        finishTimeLebel.translatesAutoresizingMaskIntoConstraints = false
+        timeStackView.addArrangedSubview(finishTimeLebel)
+    }
     
     private func setupTitleVideoLabel() {
         titleVideo.text = viewModel.playListItem.playlist.snippet?.channelTitle
