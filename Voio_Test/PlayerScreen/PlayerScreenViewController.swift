@@ -121,6 +121,7 @@ class PlayerScreenViewController: UIViewController {
         sliderForVideo.minimumValue = 0
         sliderForVideo.maximumValue = 100
         sliderForVideo.isContinuous = true
+        sliderForVideo.setThumbImage(UIImage(named: "vertical-line"), for: .normal)
         sliderForVideo.tintColor = .white
         sliderForVideo.addTarget(self, action: #selector(changeSliderForVideo), for: .valueChanged)
         verticalStackView.addArrangedSubview(sliderForVideo)
@@ -129,6 +130,9 @@ class PlayerScreenViewController: UIViewController {
             sliderForVideo.heightAnchor.constraint(equalToConstant: 10),
             sliderForVideo.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor)
         ])
+        
+        verticalStackView.setCustomSpacing(40, after: sliderForVideo)
+        
     }
     
     @objc func changeSliderForVideo(sender: UISlider){
