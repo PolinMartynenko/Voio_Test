@@ -36,8 +36,8 @@ class HomeScreenViewModelImplementation: HomeScreenViewModel {
     
     func viewDidLoad() {
         model.loadPlaylist()
-//        model.loadSecondPlaylist()
-//        model.loadThirdPlaylist()
+        model.loadSecondPlaylist()
+        model.loadThirdPlaylist()
     }
 }
 
