@@ -7,12 +7,46 @@
 
 import UIKit
 
-class HomeScreenViewController: UIViewController {
+class HomeScreenResultVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var dataModel = ["Dog", "Frog", "Jirafe", "Cat", "Monkey"]
+    var tableView = UITableView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView = UITableView(frame: self.view.bounds, style: .plain)
+        tableView.backgroundColor = UIColor.systemPink
+        tableView.showsVerticalScrollIndicator = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        self.view.addSubview(tableView)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = dataModel[indexPath.row]
+        
+        return cell
+    }
+    
+}
+
+class HomeScreenViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+
     var viewModel: HomeScreenViewModel
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     let playerButton = UIButton()
-    let searchController = UISearchController(searchResultsController: nil)
+    let searchController = UISearchController(searchResultsController: HomeScreenResultVC())
   
     
     
@@ -32,12 +66,23 @@ class HomeScreenViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search playlists")
         
         view.backgroundColor = .darkBackgroundColor
         setupCollectionView()
         setupPlayerButton()
         viewModel.viewDidLoad()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        let vc = searchController.searchResultsController as? HomeScreenResultVC
+        vc?.view.backgroundColor = .yellow
+        print(text)
     }
     
     func setupPlayerButton() {
