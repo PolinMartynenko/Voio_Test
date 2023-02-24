@@ -12,6 +12,8 @@ class HomeScreenViewController: UIViewController {
     var viewModel: HomeScreenViewModel
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     let playerButton = UIButton()
+    let searchController = UISearchController(searchResultsController: nil)
+  
     
     
     init(viewModel:HomeScreenViewModel) {
@@ -28,6 +30,9 @@ class HomeScreenViewController: UIViewController {
         navigationItem.title = "YouTube API"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search playlists")
         
         view.backgroundColor = .darkBackgroundColor
         setupCollectionView()
