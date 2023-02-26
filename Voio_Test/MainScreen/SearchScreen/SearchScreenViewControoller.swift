@@ -55,3 +55,9 @@ class SearchScreenViewController: UIViewController,UITableViewDelegate, UITableV
 extension SearchScreenViewController: SearchScreenViewModelDelegate {
     
 }
+
+extension SearchScreenViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+    }
+}

@@ -9,12 +9,13 @@ import UIKit
 
 
 
-class HomeScreenViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class HomeScreenViewController: UIViewController {
 
     var viewModel: HomeScreenViewModel
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     let playerButton = UIButton()
-    let searchController = UISearchController(searchResultsController: SearchScreenModule.build())
+    let searchScreenVC = SearchScreenModule.build()
+    lazy var searchController = UISearchController(searchResultsController: searchScreenVC)
   
     
     
@@ -34,8 +35,8 @@ class HomeScreenViewController: UIViewController, UISearchResultsUpdating, UISea
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
+//        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = searchScreenVC
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search playlists")
         
         view.backgroundColor = .darkBackgroundColor
@@ -44,14 +45,14 @@ class HomeScreenViewController: UIViewController, UISearchResultsUpdating, UISea
         viewModel.viewDidLoad()
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else {
-            return
-        }
-        let vc = searchController.searchResultsController as? SearchScreenViewController
-        vc?.view.backgroundColor = .yellow
-        print(text)
-    }
+//    func updateSearchResults(for searchController: UISearchController) {
+//        guard let text = searchController.searchBar.text else {
+//            return
+//        }
+//        let vc = searchController.searchResultsController as? SearchScreenViewController
+//        vc?.view.backgroundColor = .yellow
+//        print(text)
+//    }
     
     func setupPlayerButton() {
         playerButton.backgroundColor = .pinkColor

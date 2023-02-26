@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class SearchScreenModule {
-    static func build() -> UIViewController {
+    static func build() -> SearchScreenViewController {
         let model = SearchScreenModelImplementation()
         let viewModel = SearchScreenViewModelImplementation(model: model)
         let vc = SearchScreenViewController(viewModel: viewModel)
