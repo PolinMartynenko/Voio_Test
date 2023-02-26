@@ -7,46 +7,14 @@
 
 import UIKit
 
-class HomeScreenResultVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var dataModel = ["Dog", "Frog", "Jirafe", "Cat", "Monkey"]
-    var tableView = UITableView()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView = UITableView(frame: self.view.bounds, style: .plain)
-        tableView.backgroundColor = UIColor.systemPink
-        tableView.showsVerticalScrollIndicator = false
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        self.view.addSubview(tableView)
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataModel.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = dataModel[indexPath.row]
-        
-        return cell
-    }
-    
-}
+
 
 class HomeScreenViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
     var viewModel: HomeScreenViewModel
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     let playerButton = UIButton()
-    let searchController = UISearchController(searchResultsController: HomeScreenResultVC())
+    let searchController = UISearchController(searchResultsController: SearchScreenModule.build())
   
     
     
@@ -80,7 +48,7 @@ class HomeScreenViewController: UIViewController, UISearchResultsUpdating, UISea
         guard let text = searchController.searchBar.text else {
             return
         }
-        let vc = searchController.searchResultsController as? HomeScreenResultVC
+        let vc = searchController.searchResultsController as? SearchScreenViewController
         vc?.view.backgroundColor = .yellow
         print(text)
     }

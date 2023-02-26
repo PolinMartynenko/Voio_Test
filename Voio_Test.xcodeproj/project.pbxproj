@@ -13,6 +13,10 @@
 		EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */; };
 		EE81C79A28F85D6000BF3A85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */; };
 		EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE880C8828FC45450030C91B /* PlaylistlItem.swift */; };
+		EEB4493A29AB4DFD00E41F6E /* SearchScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493929AB4DFD00E41F6E /* SearchScreenModule.swift */; };
+		EEB4493C29AB4E2000E41F6E /* SearchScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493B29AB4E2000E41F6E /* SearchScreenModel.swift */; };
+		EEB4493E29AB4E3000E41F6E /* SearchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493D29AB4E3000E41F6E /* SearchScreenViewModel.swift */; };
+		EEB4494029AB4E4000E41F6E /* SearchScreenViewControoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493F29AB4E4000E41F6E /* SearchScreenViewControoller.swift */; };
 		EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */; };
 		EEBE6302290DAC7800EA49FD /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6301290DAC7800EA49FD /* HeaderCollectionReusableView.swift */; };
 		EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6303290DCAFE00EA49FD /* SecondCollectionViewCell.swift */; };
@@ -41,6 +45,10 @@
 		EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE880C8828FC45450030C91B /* PlaylistlItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistlItem.swift; sourceTree = "<group>"; };
+		EEB4493929AB4DFD00E41F6E /* SearchScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenModule.swift; sourceTree = "<group>"; };
+		EEB4493B29AB4E2000E41F6E /* SearchScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenModel.swift; sourceTree = "<group>"; };
+		EEB4493D29AB4E3000E41F6E /* SearchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModel.swift; sourceTree = "<group>"; };
+		EEB4493F29AB4E4000E41F6E /* SearchScreenViewControoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewControoller.swift; sourceTree = "<group>"; };
 		EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEBE6301290DAC7800EA49FD /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		EEBE6303290DCAFE00EA49FD /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -97,6 +105,17 @@
 				EE0F2E0729A7AB39001F4043 /* FirstScreenViewController.swift */,
 			);
 			path = FirstScreen;
+			sourceTree = "<group>";
+		};
+		EEB4493829AB4DD600E41F6E /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EEB4493F29AB4E4000E41F6E /* SearchScreenViewControoller.swift */,
+				EEB4493D29AB4E3000E41F6E /* SearchScreenViewModel.swift */,
+				EEB4493B29AB4E2000E41F6E /* SearchScreenModel.swift */,
+				EEB4493929AB4DFD00E41F6E /* SearchScreenModule.swift */,
+			);
+			path = SearchScreen;
 			sourceTree = "<group>";
 		};
 		EEB5E6F528F3450C00F2803E /* Views */ = {
@@ -160,6 +179,7 @@
 		EEC4B37A28F1EB5C008BBD8C /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				EEB4493829AB4DD600E41F6E /* SearchScreen */,
 				EEB5E6F528F3450C00F2803E /* Views */,
 				EEC4B36A28F1E9F0008BBD8C /* HomeScreenViewController.swift */,
 				EEC4B37F28F1EBA0008BBD8C /* HomeScreenViewModel.swift */,
@@ -315,11 +335,15 @@
 				EEBE6309290EBB7C00EA49FD /* PlayerScreenModule.swift in Sources */,
 				EEC4B37C28F1EB7B008BBD8C /* HomeScreenModule.swift in Sources */,
 				EEBE6302290DAC7800EA49FD /* HeaderCollectionReusableView.swift in Sources */,
+				EEB4493A29AB4DFD00E41F6E /* SearchScreenModule.swift in Sources */,
+				EEB4493E29AB4E3000E41F6E /* SearchScreenViewModel.swift in Sources */,
 				EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */,
+				EEB4494029AB4E4000E41F6E /* SearchScreenViewControoller.swift in Sources */,
 				EEC4B38528F1FD0C008BBD8C /* UIColorExtension.swift in Sources */,
 				EEBE6306290E838F00EA49FD /* ThirdCollectionViewCell.swift in Sources */,
 				EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */,
 				EE0F2E0829A7AB39001F4043 /* FirstScreenViewController.swift in Sources */,
+				EEB4493C29AB4E2000E41F6E /* SearchScreenModel.swift in Sources */,
 				EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */,
 				EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */,
 				EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */,
