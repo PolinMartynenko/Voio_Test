@@ -13,24 +13,31 @@ protocol SearchScreenViewModel {
 }
 
 protocol SearchScreenViewModelDelegate: AnyObject {
-    
+    func reloadData()
 }
 
 class SearchScreenViewModelImplementation: SearchScreenViewModel {
-    func onDidChangeText(_ text: String) {
-        model.onDidChangeText(text)
-    }
-    
-    
+   
     var model: SearchScreenModel
     weak var delegate: SearchScreenViewModelDelegate?
+    var playlistItems: [PlaylistlItem] = []
     
     
     init(model: SearchScreenModel) {
         self.model = model
     }
+    
+    func onDidChangeText(_ text: String) {
+        model.onDidChangeText(text)
+    }
+    
 }
 
 extension SearchScreenViewModelImplementation: SearchScreenModelDelegate {
+    func didLoadPlaylist(items: [PlaylistlItem]) {
+        self.playlistItems = items
+        delegate?.reloadData()
+    }
+    
     
 }
