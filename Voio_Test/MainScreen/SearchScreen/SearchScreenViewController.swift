@@ -58,6 +58,8 @@ extension SearchScreenViewController: SearchScreenViewModelDelegate {
 
 extension SearchScreenViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.onDidChangeText(searchText)
         print(searchText)
     }
+    
 }

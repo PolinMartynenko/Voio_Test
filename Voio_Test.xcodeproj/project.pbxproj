@@ -16,7 +16,7 @@
 		EEB4493A29AB4DFD00E41F6E /* SearchScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493929AB4DFD00E41F6E /* SearchScreenModule.swift */; };
 		EEB4493C29AB4E2000E41F6E /* SearchScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493B29AB4E2000E41F6E /* SearchScreenModel.swift */; };
 		EEB4493E29AB4E3000E41F6E /* SearchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493D29AB4E3000E41F6E /* SearchScreenViewModel.swift */; };
-		EEB4494029AB4E4000E41F6E /* SearchScreenViewControoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493F29AB4E4000E41F6E /* SearchScreenViewControoller.swift */; };
+		EEB4494029AB4E4000E41F6E /* SearchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493F29AB4E4000E41F6E /* SearchScreenViewController.swift */; };
 		EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */; };
 		EEBE6302290DAC7800EA49FD /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6301290DAC7800EA49FD /* HeaderCollectionReusableView.swift */; };
 		EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBE6303290DCAFE00EA49FD /* SecondCollectionViewCell.swift */; };
@@ -48,7 +48,7 @@
 		EEB4493929AB4DFD00E41F6E /* SearchScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenModule.swift; sourceTree = "<group>"; };
 		EEB4493B29AB4E2000E41F6E /* SearchScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenModel.swift; sourceTree = "<group>"; };
 		EEB4493D29AB4E3000E41F6E /* SearchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModel.swift; sourceTree = "<group>"; };
-		EEB4493F29AB4E4000E41F6E /* SearchScreenViewControoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewControoller.swift; sourceTree = "<group>"; };
+		EEB4493F29AB4E4000E41F6E /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
 		EEB5E6F628F3454100F2803E /* HomeScreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEBE6301290DAC7800EA49FD /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		EEBE6303290DCAFE00EA49FD /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		EEB4493829AB4DD600E41F6E /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				EEB4493F29AB4E4000E41F6E /* SearchScreenViewControoller.swift */,
+				EEB4493F29AB4E4000E41F6E /* SearchScreenViewController.swift */,
 				EEB4493D29AB4E3000E41F6E /* SearchScreenViewModel.swift */,
 				EEB4493B29AB4E2000E41F6E /* SearchScreenModel.swift */,
 				EEB4493929AB4DFD00E41F6E /* SearchScreenModule.swift */,
@@ -338,7 +338,7 @@
 				EEB4493A29AB4DFD00E41F6E /* SearchScreenModule.swift in Sources */,
 				EEB4493E29AB4E3000E41F6E /* SearchScreenViewModel.swift in Sources */,
 				EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */,
-				EEB4494029AB4E4000E41F6E /* SearchScreenViewControoller.swift in Sources */,
+				EEB4494029AB4E4000E41F6E /* SearchScreenViewController.swift in Sources */,
 				EEC4B38528F1FD0C008BBD8C /* UIColorExtension.swift in Sources */,
 				EEBE6306290E838F00EA49FD /* ThirdCollectionViewCell.swift in Sources */,
 				EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */,

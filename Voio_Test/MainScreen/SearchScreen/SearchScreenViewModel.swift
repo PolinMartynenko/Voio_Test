@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol SearchScreenViewModel {
-    
+    func onDidChangeText(_ text: String)
 }
 
 protocol SearchScreenViewModelDelegate: AnyObject {
@@ -17,6 +17,10 @@ protocol SearchScreenViewModelDelegate: AnyObject {
 }
 
 class SearchScreenViewModelImplementation: SearchScreenViewModel {
+    func onDidChangeText(_ text: String) {
+        model.onDidChangeText(text)
+    }
+    
     
     var model: SearchScreenModel
     weak var delegate: SearchScreenViewModelDelegate?
