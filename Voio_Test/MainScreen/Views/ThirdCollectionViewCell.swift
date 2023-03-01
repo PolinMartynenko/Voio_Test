@@ -35,7 +35,7 @@ class ThirdCollectionViewCell: UICollectionViewCell {
 
         titleLabel.text = playlistItem.playlist.snippet?.channelTitle
 
-        if let subscribersCount = playlistItem.channelInfo.statistics?.subscriberCount {
+        if let subscribersCount = playlistItem.channelInfo?.statistics?.subscriberCount {
             subsciberCountLabel.text = "\(subscribersCount) подписчика"
         }
     }

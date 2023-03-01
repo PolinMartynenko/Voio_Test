@@ -10,7 +10,7 @@ import GoogleAPIClientForREST
 
 struct PlaylistlItem {
     var playlist: GTLRYouTube_SearchResult
-    var channelInfo: GTLRYouTube_Channel
+    var channelInfo: GTLRYouTube_Channel?
 }
 
 struct VideoData {

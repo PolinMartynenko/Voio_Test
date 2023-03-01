@@ -185,7 +185,7 @@ class PlayerScreenViewController: UIViewController {
     }
     
     private func setupSubscribersLabel() {
-        if let subscribersCount =  viewModel.playListItem.channelInfo.statistics?.subscriberCount {
+        if let subscribersCount =  viewModel.playListItem.channelInfo?.statistics?.subscriberCount {
             subscribersLabel.text = "\(subscribersCount) подписчика" }
         subscribersLabel.textColor = .white
         subscribersLabel.translatesAutoresizingMaskIntoConstraints = false

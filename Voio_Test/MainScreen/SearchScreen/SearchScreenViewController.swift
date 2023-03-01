@@ -53,6 +53,7 @@ class SearchScreenViewController: UIViewController,UITableViewDelegate, UITableV
 
 extension SearchScreenViewController: SearchScreenViewModelDelegate {
     func reloadData() {
+        tableView.reloadData()
     }
 }
 
