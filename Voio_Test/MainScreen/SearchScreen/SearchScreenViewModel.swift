@@ -10,6 +10,7 @@ import Foundation
 
 protocol SearchScreenViewModel {
     func onDidChangeText(_ text: String)
+    var playlistItems: [PlaylistlItem] {get}
 }
 
 protocol SearchScreenViewModelDelegate: AnyObject {

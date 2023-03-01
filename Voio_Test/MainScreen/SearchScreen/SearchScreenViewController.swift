@@ -12,7 +12,6 @@ import UIKit
 class SearchScreenViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     var viewModel: SearchScreenViewModel
-    var dataModel = ["Dog", "Frog", "Jirafe", "Cat", "Monkey"]
     var tableView = UITableView()
     
     init(viewModel: SearchScreenViewModel) {
@@ -41,12 +40,12 @@ class SearchScreenViewController: UIViewController,UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataModel.count
+        return viewModel.playlistItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = dataModel[indexPath.row]
+        cell.textLabel?.text = viewModel.playlistItems[indexPath.row].playlist.snippet?.title
         
         return cell
     }
