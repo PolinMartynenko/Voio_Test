@@ -29,7 +29,7 @@ class SearchScreenModelImplementation: SearchScreenModel {
     
     
     func onDidChangeText(_ text: String) {
-        loadYoutubePlayList(q: "music", items: 10) { [weak self] result in
+        loadYoutubePlayList(q: text, items: 10) { [weak self] result in
             self?.delegate?.didLoadPlaylist(items: result)
         }
     }
