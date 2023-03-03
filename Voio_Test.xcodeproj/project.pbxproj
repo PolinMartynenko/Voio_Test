@@ -34,6 +34,9 @@
 		EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B37D28F1EB8C008BBD8C /* HomeScreenModel.swift */; };
 		EEC4B38028F1EBA0008BBD8C /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B37F28F1EBA0008BBD8C /* HomeScreenViewModel.swift */; };
 		EEC4B38528F1FD0C008BBD8C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B38428F1FD0C008BBD8C /* UIColorExtension.swift */; };
+		EEE3098E29B1E6D600F181A1 /* FirstScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3098D29B1E6D600F181A1 /* FirstScreenViewModel.swift */; };
+		EEE3099029B1E70300F181A1 /* FirstScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3098F29B1E70300F181A1 /* FirstScreenModel.swift */; };
+		EEE3099229B1E71600F181A1 /* FirstScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3099129B1E71600F181A1 /* FirstScreenModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		EEC4B37D28F1EB8C008BBD8C /* HomeScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenModel.swift; sourceTree = "<group>"; };
 		EEC4B37F28F1EBA0008BBD8C /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		EEC4B38428F1FD0C008BBD8C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		EEE3098D29B1E6D600F181A1 /* FirstScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewModel.swift; sourceTree = "<group>"; };
+		EEE3098F29B1E70300F181A1 /* FirstScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenModel.swift; sourceTree = "<group>"; };
+		EEE3099129B1E71600F181A1 /* FirstScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				EE0F2E0729A7AB39001F4043 /* FirstScreenViewController.swift */,
+				EEE3098D29B1E6D600F181A1 /* FirstScreenViewModel.swift */,
+				EEE3098F29B1E70300F181A1 /* FirstScreenModel.swift */,
+				EEE3099129B1E71600F181A1 /* FirstScreenModule.swift */,
 			);
 			path = FirstScreen;
 			sourceTree = "<group>";
@@ -165,8 +174,8 @@
 			children = (
 				EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */,
 				EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */,
-				EE0F2E0629A7AAE6001F4043 /* FirstScreen */,
 				EEC4B38328F1FBAD008BBD8C /* Extension */,
+				EE0F2E0629A7AAE6001F4043 /* FirstScreen */,
 				EEC4B37A28F1EB5C008BBD8C /* MainScreen */,
 				EEBE6307290EBAFB00EA49FD /* PlayerScreen */,
 				EEC4B36F28F1E9F3008BBD8C /* Assets.xcassets */,
@@ -344,14 +353,17 @@
 				EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */,
 				EE0F2E0829A7AB39001F4043 /* FirstScreenViewController.swift in Sources */,
 				EEB4493C29AB4E2000E41F6E /* SearchScreenModel.swift in Sources */,
+				EEE3099229B1E71600F181A1 /* FirstScreenModule.swift in Sources */,
 				EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */,
 				EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */,
 				EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */,
 				EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */,
 				EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */,
+				EEE3098E29B1E6D600F181A1 /* FirstScreenViewModel.swift in Sources */,
 				EEBE630B290EBB9400EA49FD /* PlayerScreenModel.swift in Sources */,
 				EEBE630F290EBBBB00EA49FD /* PlayerScreenViewController.swift in Sources */,
 				EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */,
+				EEE3099029B1E70300F181A1 /* FirstScreenModel.swift in Sources */,
 				EEC4B38028F1EBA0008BBD8C /* HomeScreenViewModel.swift in Sources */,
 				EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */,
 				EEBE630D290EBBA800EA49FD /* PlayerScreenViewModel.swift in Sources */,
