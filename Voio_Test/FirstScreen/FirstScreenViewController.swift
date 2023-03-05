@@ -13,7 +13,8 @@ class FirstScreenViewController: UIViewController {
     let logoImageView = UIImageView()
     let stackView = UIStackView()
     let registrationLabel = UILabel()
-    let welcomeMusicLabLabel = UILabel()
+    let welcomeLabel = UILabel()
+    let musicLabLabel = UILabel()
     let registrationButton = UIButton()
     let skiptButton = UIButton()
     
@@ -30,7 +31,9 @@ class FirstScreenViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .darkBackgroundColor
         setupLogoImageView()
-        setupStackView()
+        setupwelcomeLabel()
+        setupMusicLabLabel()
+        setupStackViewForButtons()
     }
     
     private func setupLogoImageView() {
@@ -44,35 +47,71 @@ class FirstScreenViewController: UIViewController {
             
     }
     
-    private func setupStackView() {
+    private func setupwelcomeLabel() {
+        welcomeLabel.text = "Welcome,"
+        welcomeLabel.font = UIFont(name: "Poppins-Bold", size: 30)
+        welcomeLabel.textColor = .white
+        welcomeLabel.textAlignment = .center
+        view.addSubview(welcomeLabel)
+        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            welcomeLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40),
+            welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+    }
+    
+    private func setupMusicLabLabel() {
+        musicLabLabel.text = "MusicLab"
+        musicLabLabel.font = UIFont(name: "FredokaOne-Regular", size: 60)
+        musicLabLabel.textColor = .white
+        musicLabLabel.textAlignment = .center
+        view.addSubview(musicLabLabel)
+        musicLabLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            musicLabLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 20),
+            musicLabLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+    }
+    
+    private func setupStackViewForButtons() {
         stackView.axis = .vertical
         stackView.spacing = 15
         stackView.alignment = .center
         view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor),
+            stackView.topAnchor.constraint(equalTo: musicLabLabel.bottomAnchor, constant: 50),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
         ])
         
-        setupwelcomeMusicLabLabel()
+        setuRegistrationButton()
+        
     }
     
-    private func setupwelcomeMusicLabLabel() {
-        welcomeMusicLabLabel.text = "Welcome to MusicLab"
-        welcomeMusicLabLabel.font = UIFont(name: "Poppins-Bold", size: 32)
-        welcomeMusicLabLabel.textColor = .white
-        welcomeMusicLabLabel.textAlignment = .center
-        stackView.addArrangedSubview(welcomeMusicLabLabel)
-        welcomeMusicLabLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func setuRegistrationButton() {
+        registrationButton.setTitle("Sign up", for: .normal)
+        registrationButton.titleLabel?.font = UIFont(name: "Poppins-Regular", size: 20)
+        registrationButton.setTitleColor(.darkBackgroundColor, for: .normal)
+        registrationButton.backgroundColor = .pinkColor
+        registrationButton.layer.cornerRadius = 15
+//        registrationButton.addTarget(self, action: #selector(self.touchSignUp), for: .touchUpInside)
+        stackView.addArrangedSubview(registrationButton)
+        registrationButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            welcomeMusicLabLabel.heightAnchor.constraint(equalToConstant: 40)
+            registrationButton.heightAnchor.constraint(equalToConstant: 60),
+            registrationButton.widthAnchor.constraint(equalToConstant: 150)
         ])
         
     }
     
-    
+//    @objc func touchSignUp() {
+//        let signUpVc = RegistrationWithGoogleModule.build()
+//        present(signUpVc, animated: true, completion: nil)
+//        print("Button clicked sign up and transition to next screen")
+//    }
     
     
     

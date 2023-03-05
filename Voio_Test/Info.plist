@@ -4,7 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string></string>
+		<string>FredokaOne-Regular.ttf</string>
+		<string>Poppins-Regular.ttf</string>
+		<string>Poppins-ExtraLight.ttf</string>
+		<string>Poppins-Thin.ttf</string>
+		<string>Poppins-Bold.ttf</string>
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
