@@ -11,4 +11,9 @@ pod 'Google/SignIn', '~> 3.0.3'
 pod 'SDWebImage', '~> 5.0'
 pod "youtube-ios-player-helper"
 
+pod 'Firebase'
+pod 'FirebaseCore'
+pod 'FirebaseAuth'
+pod 'GoogleSignIn'
+
 end

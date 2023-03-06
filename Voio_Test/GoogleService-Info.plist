@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>78114796172-75m9frh8k25lk5rkrinld5norbnj5cf3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.78114796172-75m9frh8k25lk5rkrinld5norbnj5cf3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCBeol05UZRICbDM10PoRCF6l-BVl_a6DM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>78114796172</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>polya.com.Voio-Test</string>
+	<key>PROJECT_ID</key>
+	<string>sign-in-test-a02cc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sign-in-test-a02cc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:78114796172:ios:6fc6da9f7cd67a5f0d01a9</string>
+</dict>
+</plist>

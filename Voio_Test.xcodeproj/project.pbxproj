@@ -12,8 +12,8 @@
 		EE42646729B4C8F9000BC4B8 /* RegistrationWithGoogleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42646629B4C8F9000BC4B8 /* RegistrationWithGoogleModule.swift */; };
 		EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */; };
 		EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */; };
-		EE81C79A28F85D6000BF3A85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */; };
 		EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE880C8828FC45450030C91B /* PlaylistlItem.swift */; };
+		EE89268229B6421B0037B9D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE89268129B6421B0037B9D7 /* GoogleService-Info.plist */; };
 		EEB4493A29AB4DFD00E41F6E /* SearchScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493929AB4DFD00E41F6E /* SearchScreenModule.swift */; };
 		EEB4493C29AB4E2000E41F6E /* SearchScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493B29AB4E2000E41F6E /* SearchScreenModel.swift */; };
 		EEB4493E29AB4E3000E41F6E /* SearchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4493D29AB4E3000E41F6E /* SearchScreenViewModel.swift */; };
@@ -53,8 +53,8 @@
 		EE42646629B4C8F9000BC4B8 /* RegistrationWithGoogleModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationWithGoogleModule.swift; sourceTree = "<group>"; };
 		EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundExtension.swift; sourceTree = "<group>"; };
 		EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
-		EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE880C8828FC45450030C91B /* PlaylistlItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistlItem.swift; sourceTree = "<group>"; };
+		EE89268129B6421B0037B9D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EEB4493929AB4DFD00E41F6E /* SearchScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenModule.swift; sourceTree = "<group>"; };
 		EEB4493B29AB4E2000E41F6E /* SearchScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenModel.swift; sourceTree = "<group>"; };
 		EEB4493D29AB4E3000E41F6E /* SearchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModel.swift; sourceTree = "<group>"; };
@@ -173,7 +173,6 @@
 		EEC4B35A28F1E9EF008BBD8C = {
 			isa = PBXGroup;
 			children = (
-				EE81C79928F85D6000BF3A85 /* GoogleService-Info.plist */,
 				EEC4B36528F1E9F0008BBD8C /* Voio_Test */,
 				EEC4B36428F1E9F0008BBD8C /* Products */,
 				9545701D42D760A17AA2124E /* Pods */,
@@ -192,6 +191,7 @@
 		EEC4B36528F1E9F0008BBD8C /* Voio_Test */ = {
 			isa = PBXGroup;
 			children = (
+				EE89268129B6421B0037B9D7 /* GoogleService-Info.plist */,
 				EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */,
 				EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */,
 				EEE3099829B32DC900F181A1 /* Fonts */,
@@ -304,9 +304,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEE3099E29B32E0C00F181A1 /* Poppins-ExtraLight.ttf in Resources */,
+				EE89268229B6421B0037B9D7 /* GoogleService-Info.plist in Resources */,
 				EEC4B37328F1E9F3008BBD8C /* LaunchScreen.storyboard in Resources */,
 				EEE309A029B32E2000F181A1 /* Poppins-Regular.ttf in Resources */,
-				EE81C79A28F85D6000BF3A85 /* GoogleService-Info.plist in Resources */,
 				EEC4B37028F1E9F3008BBD8C /* Assets.xcassets in Resources */,
 				EEE3099A29B32DF000F181A1 /* Poppins-Bold.ttf in Resources */,
 				EEE3099C29B32E0100F181A1 /* Poppins-Thin.ttf in Resources */,
