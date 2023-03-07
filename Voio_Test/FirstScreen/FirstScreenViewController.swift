@@ -92,7 +92,7 @@ class FirstScreenViewController: UIViewController {
         ])
         
         setuRegistrationButton()
-//        setupSignInGoogleButton()
+        setupSkipButton()
         
     }
     
@@ -106,7 +106,7 @@ class FirstScreenViewController: UIViewController {
     }
     
     private func setuRegistrationButton() {
-        registrationButton.setTitle("Sign up", for: .normal)
+        registrationButton.setTitle("Sign in", for: .normal)
         registrationButton.titleLabel?.font = UIFont(name: "Poppins-Regular", size: 20)
         registrationButton.setTitleColor(.darkBackgroundColor, for: .normal)
         registrationButton.backgroundColor = .pinkColor
@@ -125,7 +125,23 @@ class FirstScreenViewController: UIViewController {
         GIDSignIn.sharedInstance().signIn()
     }
     
+    private func setupSkipButton() {
+        skiptButton.setTitle("Skip", for: .normal)
+        skiptButton.titleLabel?.font = UIFont(name: "Poppins-Regular", size: 20)
+        skiptButton.setTitleColor(.pinkColor, for: .normal)
+        skiptButton.addTarget(self, action: #selector(self.touchSkip), for: .touchUpInside)
+        stackView.addArrangedSubview(skiptButton)
+        skiptButton.translatesAutoresizingMaskIntoConstraints = false
+    }
     
+    @objc func touchSkip() {
+        let homeViewController = HomeScreenModule.build()
+        let navigationController = UINavigationController(rootViewController: homeViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        
+        present(navigationController, animated: true)
+        print("Button clicked and transition to next screen")
+    }
     
 }
 
