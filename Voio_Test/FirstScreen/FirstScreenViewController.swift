@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class FirstScreenViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class FirstScreenViewController: UIViewController {
     let registrationLabel = UILabel()
     let welcomeLabel = UILabel()
     let musicLabLabel = UILabel()
+    let signInGoogleButton = GIDSignInButton()
     let registrationButton = UIButton()
     let skiptButton = UIButton()
     
@@ -34,6 +36,8 @@ class FirstScreenViewController: UIViewController {
         setupwelcomeLabel()
         setupMusicLabLabel()
         setupStackViewForButtons()
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
     private func setupLogoImageView() {
@@ -88,7 +92,17 @@ class FirstScreenViewController: UIViewController {
         ])
         
         setuRegistrationButton()
+//        setupSignInGoogleButton()
         
+    }
+    
+    private func setupSignInGoogleButton() {
+        stackView.addArrangedSubview(signInGoogleButton)
+        signInGoogleButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            signInGoogleButton.heightAnchor.constraint(equalToConstant: 60),
+            signInGoogleButton.widthAnchor.constraint(equalToConstant: 150)
+        ])
     }
     
     private func setuRegistrationButton() {
@@ -97,26 +111,28 @@ class FirstScreenViewController: UIViewController {
         registrationButton.setTitleColor(.darkBackgroundColor, for: .normal)
         registrationButton.backgroundColor = .pinkColor
         registrationButton.layer.cornerRadius = 15
-//        registrationButton.addTarget(self, action: #selector(self.touchSignUp), for: .touchUpInside)
+        registrationButton.addTarget(self, action: #selector(self.touchSignUp), for: .touchUpInside)
         stackView.addArrangedSubview(registrationButton)
         registrationButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             registrationButton.heightAnchor.constraint(equalToConstant: 60),
             registrationButton.widthAnchor.constraint(equalToConstant: 150)
         ])
-        
+
     }
     
-//    @objc func touchSignUp() {
-//        let signUpVc = RegistrationWithGoogleModule.build()
-//        present(signUpVc, animated: true, completion: nil)
-//        print("Button clicked sign up and transition to next screen")
-//    }
+    @objc func touchSignUp() {
+        GIDSignIn.sharedInstance().signIn()
+    }
     
     
     
 }
 
 extension FirstScreenViewController: FirstScreenViewModelDelegate {
+    
+}
+
+extension FirstScreenViewController: GIDSignInUIDelegate {
     
 }
