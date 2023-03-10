@@ -16,8 +16,8 @@ class HomeScreenViewController: UIViewController {
     let playerButton = UIButton()
     let searchScreenVC = SearchScreenModule.build()
     lazy var searchController = UISearchController(searchResultsController: searchScreenVC)
-  
-    
+    let navigationBarAppearance = UINavigationBarAppearance()
+
     
     init(viewModel:HomeScreenViewModel) {
         self.viewModel = viewModel
@@ -33,13 +33,21 @@ class HomeScreenViewController: UIViewController {
         
         navigationItem.title = "YouTube API"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
 //        searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = searchScreenVC
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search playlists")
+        searchController.searchBar.placeholder = "Search playlists"
         
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.backgroundColor = .darkBackgroundColor
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        
+
         view.backgroundColor = .darkBackgroundColor
         setupCollectionView()
         setupPlayerButton()
