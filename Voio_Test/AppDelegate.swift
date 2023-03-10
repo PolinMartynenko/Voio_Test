@@ -13,20 +13,14 @@ import Firebase
 import FirebaseAnalytics
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GIDSignIn.sharedInstance().clientID = "541323726935-2pa7ccfo3uj5uq983ajvk83as22bt27t.apps.googleusercontent.com"
         
         FIRApp.configure()
         GIDSignIn.sharedInstance().clientID = "78114796172-75m9frh8k25lk5rkrinld5norbnj5cf3.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().delegate = self
         
         return true
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        print("User email: \(user.profile.email ?? "No Email")")
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

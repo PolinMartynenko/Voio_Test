@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FirebaseCore
+import FirebaseAuth
+import Firebase
+import FirebaseAnalytics
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,6 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let winScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: winScene)
+        
+        GIDSignIn.sharedInstance().delegate = self
     
         let homeVC = WelcomeScreenModule.build()
         let navHomeVC = UINavigationController(rootViewController: homeVC)
@@ -53,3 +60,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension SceneDelegate: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        print("User email: \(user.profile.email ?? "No Email")")
+    }
+}
