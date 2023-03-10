@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		763A8A82BE6124EC398DAB7E /* Pods_Voio_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */; };
-		EE0F2E0829A7AB39001F4043 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0F2E0729A7AB39001F4043 /* FirstScreenViewController.swift */; };
+		EE0F2E0829A7AB39001F4043 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0F2E0729A7AB39001F4043 /* WelcomeScreenViewController.swift */; };
 		EE42646729B4C8F9000BC4B8 /* RegistrationWithGoogleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42646629B4C8F9000BC4B8 /* RegistrationWithGoogleModule.swift */; };
 		EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */; };
 		EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */; };
@@ -35,9 +35,9 @@
 		EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B37D28F1EB8C008BBD8C /* HomeScreenModel.swift */; };
 		EEC4B38028F1EBA0008BBD8C /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B37F28F1EBA0008BBD8C /* HomeScreenViewModel.swift */; };
 		EEC4B38528F1FD0C008BBD8C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B38428F1FD0C008BBD8C /* UIColorExtension.swift */; };
-		EEE3098E29B1E6D600F181A1 /* FirstScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3098D29B1E6D600F181A1 /* FirstScreenViewModel.swift */; };
-		EEE3099029B1E70300F181A1 /* FirstScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3098F29B1E70300F181A1 /* FirstScreenModel.swift */; };
-		EEE3099229B1E71600F181A1 /* FirstScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3099129B1E71600F181A1 /* FirstScreenModule.swift */; };
+		EEE3098E29B1E6D600F181A1 /* WelcomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3098D29B1E6D600F181A1 /* WelcomeScreenViewModel.swift */; };
+		EEE3099029B1E70300F181A1 /* WelcomeScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3098F29B1E70300F181A1 /* WelcomeScreenModel.swift */; };
+		EEE3099229B1E71600F181A1 /* WelcomeScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3099129B1E71600F181A1 /* WelcomeScreenModule.swift */; };
 		EEE3099A29B32DF000F181A1 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEE3099929B32DF000F181A1 /* Poppins-Bold.ttf */; };
 		EEE3099C29B32E0100F181A1 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEE3099B29B32E0100F181A1 /* Poppins-Thin.ttf */; };
 		EEE3099E29B32E0C00F181A1 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEE3099D29B32E0C00F181A1 /* Poppins-ExtraLight.ttf */; };
@@ -49,7 +49,7 @@
 		08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voio_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		636220453EBBF9B6B6F6985D /* Pods-Voio_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.debug.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.debug.xcconfig"; sourceTree = "<group>"; };
 		CBD3542FA29DB82094F484AC /* Pods-Voio_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.release.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.release.xcconfig"; sourceTree = "<group>"; };
-		EE0F2E0729A7AB39001F4043 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
+		EE0F2E0729A7AB39001F4043 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		EE42646629B4C8F9000BC4B8 /* RegistrationWithGoogleModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationWithGoogleModule.swift; sourceTree = "<group>"; };
 		EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundExtension.swift; sourceTree = "<group>"; };
 		EE7CFFFF28F95714003C9158 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -78,9 +78,9 @@
 		EEC4B37D28F1EB8C008BBD8C /* HomeScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenModel.swift; sourceTree = "<group>"; };
 		EEC4B37F28F1EBA0008BBD8C /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		EEC4B38428F1FD0C008BBD8C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		EEE3098D29B1E6D600F181A1 /* FirstScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewModel.swift; sourceTree = "<group>"; };
-		EEE3098F29B1E70300F181A1 /* FirstScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenModel.swift; sourceTree = "<group>"; };
-		EEE3099129B1E71600F181A1 /* FirstScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenModule.swift; sourceTree = "<group>"; };
+		EEE3098D29B1E6D600F181A1 /* WelcomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewModel.swift; sourceTree = "<group>"; };
+		EEE3098F29B1E70300F181A1 /* WelcomeScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenModel.swift; sourceTree = "<group>"; };
+		EEE3099129B1E71600F181A1 /* WelcomeScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenModule.swift; sourceTree = "<group>"; };
 		EEE3099929B32DF000F181A1 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		EEE3099B29B32E0100F181A1 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		EEE3099D29B32E0C00F181A1 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -120,10 +120,10 @@
 		EE0F2E0629A7AAE6001F4043 /* FirstScreen */ = {
 			isa = PBXGroup;
 			children = (
-				EE0F2E0729A7AB39001F4043 /* FirstScreenViewController.swift */,
-				EEE3098D29B1E6D600F181A1 /* FirstScreenViewModel.swift */,
-				EEE3098F29B1E70300F181A1 /* FirstScreenModel.swift */,
-				EEE3099129B1E71600F181A1 /* FirstScreenModule.swift */,
+				EE0F2E0729A7AB39001F4043 /* WelcomeScreenViewController.swift */,
+				EEE3098D29B1E6D600F181A1 /* WelcomeScreenViewModel.swift */,
+				EEE3098F29B1E70300F181A1 /* WelcomeScreenModel.swift */,
+				EEE3099129B1E71600F181A1 /* WelcomeScreenModule.swift */,
 			);
 			path = FirstScreen;
 			sourceTree = "<group>";
@@ -390,20 +390,20 @@
 				EEC4B38528F1FD0C008BBD8C /* UIColorExtension.swift in Sources */,
 				EEBE6306290E838F00EA49FD /* ThirdCollectionViewCell.swift in Sources */,
 				EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */,
-				EE0F2E0829A7AB39001F4043 /* FirstScreenViewController.swift in Sources */,
+				EE0F2E0829A7AB39001F4043 /* WelcomeScreenViewController.swift in Sources */,
 				EEB4493C29AB4E2000E41F6E /* SearchScreenModel.swift in Sources */,
-				EEE3099229B1E71600F181A1 /* FirstScreenModule.swift in Sources */,
+				EEE3099229B1E71600F181A1 /* WelcomeScreenModule.swift in Sources */,
 				EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */,
 				EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */,
 				EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */,
 				EE42646729B4C8F9000BC4B8 /* RegistrationWithGoogleModule.swift in Sources */,
 				EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */,
 				EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */,
-				EEE3098E29B1E6D600F181A1 /* FirstScreenViewModel.swift in Sources */,
+				EEE3098E29B1E6D600F181A1 /* WelcomeScreenViewModel.swift in Sources */,
 				EEBE630B290EBB9400EA49FD /* PlayerScreenModel.swift in Sources */,
 				EEBE630F290EBBBB00EA49FD /* PlayerScreenViewController.swift in Sources */,
 				EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */,
-				EEE3099029B1E70300F181A1 /* FirstScreenModel.swift in Sources */,
+				EEE3099029B1E70300F181A1 /* WelcomeScreenModel.swift in Sources */,
 				EEC4B38028F1EBA0008BBD8C /* HomeScreenViewModel.swift in Sources */,
 				EE7C000028F95715003C9158 /* GalleryCollectionViewCell.swift in Sources */,
 				EEBE630D290EBBA800EA49FD /* PlayerScreenViewModel.swift in Sources */,

@@ -8,9 +8,9 @@
 import UIKit
 import GoogleSignIn
 
-class FirstScreenViewController: UIViewController {
+class WelcomeScreenViewController: UIViewController {
     
-    var viewModel: FirstScreenViewModel
+    var viewModel: WelcomeScreenViewModel
     let logoImageView = UIImageView()
     let stackView = UIStackView()
     let registrationLabel = UILabel()
@@ -20,7 +20,7 @@ class FirstScreenViewController: UIViewController {
     let registrationButton = UIButton()
     let skiptButton = UIButton()
     
-    init(viewModel: FirstScreenViewModel) {
+    init(viewModel: WelcomeScreenViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -145,10 +145,10 @@ class FirstScreenViewController: UIViewController {
     
 }
 
-extension FirstScreenViewController: FirstScreenViewModelDelegate {
+extension WelcomeScreenViewController: WelcomeScreenViewModelDelegate {
     
 }
 
-extension FirstScreenViewController: GIDSignInUIDelegate {
+extension WelcomeScreenViewController: GIDSignInUIDelegate {
     
 }
