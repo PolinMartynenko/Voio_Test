@@ -63,8 +63,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if GIDSignIn.sharedInstance().hasAuthInKeychain()  {
-            let homeViewController = HomeScreenModule.build()
-            let navigationController = UINavigationController(rootViewController: homeViewController)
+            let myPlaylistScreenViewController = MyPlaylistScreenModule.build()
+            let navigationController = UINavigationController(rootViewController: myPlaylistScreenViewController)
             navigationController.modalPresentationStyle = .fullScreen
             
             window?.rootViewController?.present(navigationController, animated: true)
