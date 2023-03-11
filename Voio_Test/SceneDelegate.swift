@@ -62,6 +62,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if GIDSignIn.sharedInstance().hasAuthInKeychain()  {
+            let homeViewController = HomeScreenModule.build()
+            let navigationController = UINavigationController(rootViewController: homeViewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            
+            window?.rootViewController?.present(navigationController, animated: true)
+        } else {
         print("User email: \(user.profile.email ?? "No Email")")
+        }
     }
 }
