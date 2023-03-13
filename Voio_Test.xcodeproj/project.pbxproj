@@ -29,7 +29,6 @@
 		EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */; };
 		EEC4B36928F1E9F0008BBD8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */; };
 		EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B36A28F1E9F0008BBD8C /* HomeScreenViewController.swift */; };
-		EEC4B37028F1E9F3008BBD8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEC4B36F28F1E9F3008BBD8C /* Assets.xcassets */; };
 		EEC4B37328F1E9F3008BBD8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEC4B37128F1E9F3008BBD8C /* LaunchScreen.storyboard */; };
 		EEC4B37C28F1EB7B008BBD8C /* HomeScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B37B28F1EB7B008BBD8C /* HomeScreenModule.swift */; };
 		EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B37D28F1EB8C008BBD8C /* HomeScreenModel.swift */; };
@@ -38,6 +37,7 @@
 		EEE2FC6E29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2FC6D29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift */; };
 		EEE2FC7029BD10EA000CFDE5 /* MyPlaylistScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2FC6F29BD10EA000CFDE5 /* MyPlaylistScreenViewModel.swift */; };
 		EEE2FC7229BD10FE000CFDE5 /* MyPlaylistScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2FC7129BD10FE000CFDE5 /* MyPlaylistScreenViewController.swift */; };
+		EEE2FC7429BF30F5000CFDE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEE2FC7329BF30F4000CFDE5 /* Assets.xcassets */; };
 		EEE3098E29B1E6D600F181A1 /* WelcomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3098D29B1E6D600F181A1 /* WelcomeScreenViewModel.swift */; };
 		EEE3099029B1E70300F181A1 /* WelcomeScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3098F29B1E70300F181A1 /* WelcomeScreenModel.swift */; };
 		EEE3099229B1E71600F181A1 /* WelcomeScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3099129B1E71600F181A1 /* WelcomeScreenModule.swift */; };
@@ -74,7 +74,6 @@
 		EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EEC4B36A28F1E9F0008BBD8C /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
-		EEC4B36F28F1E9F3008BBD8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEC4B37228F1E9F3008BBD8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEC4B37428F1E9F3008BBD8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEC4B37B28F1EB7B008BBD8C /* HomeScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenModule.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		EEE2FC6D29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistScreenModel.swift; sourceTree = "<group>"; };
 		EEE2FC6F29BD10EA000CFDE5 /* MyPlaylistScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistScreenViewModel.swift; sourceTree = "<group>"; };
 		EEE2FC7129BD10FE000CFDE5 /* MyPlaylistScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistScreenViewController.swift; sourceTree = "<group>"; };
+		EEE2FC7329BF30F4000CFDE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		EEE3098D29B1E6D600F181A1 /* WelcomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewModel.swift; sourceTree = "<group>"; };
 		EEE3098F29B1E70300F181A1 /* WelcomeScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenModel.swift; sourceTree = "<group>"; };
 		EEE3099129B1E71600F181A1 /* WelcomeScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenModule.swift; sourceTree = "<group>"; };
@@ -209,9 +209,9 @@
 				EE0F2E0629A7AAE6001F4043 /* FirstScreen */,
 				EEC4B37A28F1EB5C008BBD8C /* MainScreen */,
 				EEBE6307290EBAFB00EA49FD /* PlayerScreen */,
-				EEC4B36F28F1E9F3008BBD8C /* Assets.xcassets */,
 				EEC4B37128F1E9F3008BBD8C /* LaunchScreen.storyboard */,
 				EEC4B37428F1E9F3008BBD8C /* Info.plist */,
+				EEE2FC7329BF30F4000CFDE5 /* Assets.xcassets */,
 			);
 			path = Voio_Test;
 			sourceTree = "<group>";
@@ -316,9 +316,9 @@
 				EE89268229B6421B0037B9D7 /* GoogleService-Info.plist in Resources */,
 				EEC4B37328F1E9F3008BBD8C /* LaunchScreen.storyboard in Resources */,
 				EEE309A029B32E2000F181A1 /* Poppins-Regular.ttf in Resources */,
-				EEC4B37028F1E9F3008BBD8C /* Assets.xcassets in Resources */,
 				EEE3099A29B32DF000F181A1 /* Poppins-Bold.ttf in Resources */,
 				EEE3099C29B32E0100F181A1 /* Poppins-Thin.ttf in Resources */,
+				EEE2FC7429BF30F5000CFDE5 /* Assets.xcassets in Resources */,
 				EEE309A229B3A58100F181A1 /* FredokaOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
