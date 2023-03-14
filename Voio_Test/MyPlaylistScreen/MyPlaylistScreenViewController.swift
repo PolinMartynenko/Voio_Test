@@ -12,8 +12,10 @@ class MyPlaylistScreenViewController: UIViewController {
     
     var viewModel: MyPlaylistScreenViewModel
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    let playerButton = UIButton()
+    
     let navigationBarAppearance = UINavigationBarAppearance()
-    let back = UIImage(named: "Settings")?.withRenderingMode(.alwaysOriginal)
+    let settings = UIImage(named: "Settings")?.withRenderingMode(.alwaysOriginal)
     
     
     init(viewModel: MyPlaylistScreenViewModel) {
@@ -42,7 +44,8 @@ class MyPlaylistScreenViewController: UIViewController {
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: back, style:.plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: settings, style:.plain, target: nil, action: nil)
+        
     }
 }
 
