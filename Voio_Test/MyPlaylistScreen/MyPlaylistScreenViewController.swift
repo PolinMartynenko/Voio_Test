@@ -51,7 +51,7 @@ class MyPlaylistScreenViewController: UIViewController {
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .pinkColor
+        collectionView.backgroundColor = .darkBackgroundColor
         collectionView.alwaysBounceVertical = true
         
         collectionView.register(MyPlaylistCollectionViewCell.self, forCellWithReuseIdentifier: MyPlaylistCollectionViewCell.reuseId)
@@ -70,13 +70,21 @@ class MyPlaylistScreenViewController: UIViewController {
         collectionView.collectionViewLayout = createCompositionalLayout()
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
+    
+        header.configure()
+        return header
+    }
+    
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
             switch sectionNumber {
             case 0: return self.firstLayoutSection()
+            case 1: return self.secondLayoutSection()
             default: break
             }
-            return self.firstLayoutSection()
+            return self.secondLayoutSection()
         }
     }
     
@@ -97,9 +105,25 @@ class MyPlaylistScreenViewController: UIViewController {
         return section
     }
     
-    
+    private func secondLayoutSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),heightDimension: .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),heightDimension: .fractionalHeight(0.3))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = .init(top: 10, leading: 15, bottom: 0, trailing: 0)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerElement]
+        
+        return section
+    }
 }
-
 
 extension MyPlaylistScreenViewController: MyPlaylistScreenViewModelDelegate {
     
@@ -112,20 +136,38 @@ extension MyPlaylistScreenViewController: UICollectionViewDelegate {
 }
 
 extension MyPlaylistScreenViewController: UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.firstSectionItems.count
+        if section == 0 {
+            return viewModel.firstSectionItems.count
+        } else {
+            return viewModel.secondSectionItems.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
-          return UICollectionViewCell() }
-        let image = viewModel.firstSectionItems[indexPath.row]
-        cell.setupCell(colour: .red, image: UIImage(named: "1"))
-        return cell
+        switch indexPath.section {
+        case 0:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
+                return UICollectionViewCell() }
+            let image = viewModel.firstSectionItems[indexPath.row]
+            cell.setupCell(colour: .red, image: UIImage(named: "1"))
+            return cell
+            
+        case 1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
+                return UICollectionViewCell() }
+            let image = viewModel.secondSectionItems[indexPath.row]
+            cell.setupCell(colour: .red, image: UIImage(named: "2"))
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+        
     }
     
 }

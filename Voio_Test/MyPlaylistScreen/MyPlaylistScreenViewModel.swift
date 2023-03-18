@@ -10,6 +10,7 @@ import UIKit
 
 protocol MyPlaylistScreenViewModel {
     var firstSectionItems: [String] { get }
+    var secondSectionItems: [String] { get }
     
 }
 
@@ -21,6 +22,7 @@ class MyPlaylistScreenViewModelImplementation: MyPlaylistScreenViewModel {
     weak var delegate: MyPlaylistScreenViewModelDelegate?
     var model: MyPlaylistScreenModel
     var firstSectionItems: [String] = ["1","2","3"]
+    var secondSectionItems: [String] = ["2", "1", "1", "3", "2", "1", "1", "3"]
     
     init(model: MyPlaylistScreenModel) {
         self.model = model
