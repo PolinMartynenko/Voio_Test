@@ -82,9 +82,9 @@ class MyPlaylistScreenViewController: UIViewController {
             switch sectionNumber {
             case 0: return self.firstLayoutSection()
             case 1: return self.secondLayoutSection()
-            default: break
+            case 2: return self.thirdLayoutSection()
+            default: return self.secondLayoutSection()
             }
-            return self.secondLayoutSection()
         }
     }
     
@@ -123,6 +123,26 @@ class MyPlaylistScreenViewController: UIViewController {
         
         return section
     }
+    
+    private func thirdLayoutSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),heightDimension: .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.7),heightDimension: .fractionalHeight(0.2))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = .init(top: 11, leading: 15, bottom: 0, trailing: 0)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerElement]
+        
+        return section
+    }
 }
 
 extension MyPlaylistScreenViewController: MyPlaylistScreenViewModelDelegate {
@@ -138,14 +158,16 @@ extension MyPlaylistScreenViewController: UICollectionViewDelegate {
 extension MyPlaylistScreenViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        2
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return viewModel.firstSectionItems.count
-        } else {
+        } else if section == 1 {
             return viewModel.secondSectionItems.count
+        } else {
+            return viewModel.thirdSectionItems.count
         }
     }
     
@@ -164,6 +186,14 @@ extension MyPlaylistScreenViewController: UICollectionViewDataSource {
             let image = viewModel.secondSectionItems[indexPath.row]
             cell.setupCell(colour: .red, image: UIImage(named: "2"))
             return cell
+            
+        case 2:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
+                return UICollectionViewCell() }
+            let image = viewModel.thirdSectionItems[indexPath.row]
+            cell.setupCell(colour: .red, image: UIImage(named: "3"))
+            return cell
+            
         default:
             return UICollectionViewCell()
         }
