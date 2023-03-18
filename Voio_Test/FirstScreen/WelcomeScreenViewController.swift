@@ -122,6 +122,7 @@ class WelcomeScreenViewController: UIViewController {
     }
     
     @objc func touchSignUp() {
+        GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/youtube"]
         GIDSignIn.sharedInstance().signIn()
     }
     
