@@ -67,8 +67,37 @@ class MyPlaylistScreenViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
         ])
-//        collectionView.collectionViewLayout = createCompositionalLayout()
+        collectionView.collectionViewLayout = createCompositionalLayout()
     }
+    
+    private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+            switch sectionNumber {
+            case 0: return self.firstLayoutSection()
+            default: break
+            }
+            return self.firstLayoutSection()
+        }
+    }
+    
+    private func firstLayoutSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),heightDimension: .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets.bottom = 10
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),heightDimension: .fractionalHeight(0.4))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
+    }
+    
+    
 }
 
 
@@ -83,13 +112,19 @@ extension MyPlaylistScreenViewController: UICollectionViewDelegate {
 }
 
 extension MyPlaylistScreenViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return viewModel.firstSectionItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
           return UICollectionViewCell() }
+        let image = viewModel.firstSectionItems[indexPath.row]
+        cell.setupCell(colour: .red, image: UIImage(named: "1"))
         return cell
     }
     
