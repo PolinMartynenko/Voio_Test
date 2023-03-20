@@ -1,5 +1,5 @@
 //
-//  FirstScreenViewController.swift
+//  WelcomeScreenViewController.swift
 //  Voio_Test
 //
 //  Created by Polina Martynenko on 23.02.2023.
@@ -122,7 +122,10 @@ class WelcomeScreenViewController: UIViewController {
     }
     
     @objc func touchSignUp() {
-        GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/youtube"]
+        GIDSignIn.sharedInstance().scopes = [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.readonly"
+        ]
         GIDSignIn.sharedInstance().signIn()
     }
     

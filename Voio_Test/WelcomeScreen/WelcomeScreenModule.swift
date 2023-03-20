@@ -1,5 +1,5 @@
 //
-//  FirstScreenModule.swift
+//  WelcomeScreenModule.swift
 //  Voio_Test
 //
 //  Created by Polina Martynenko on 03.03.2023.

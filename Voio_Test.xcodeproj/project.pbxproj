@@ -125,7 +125,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EE0F2E0629A7AAE6001F4043 /* FirstScreen */ = {
+		EE0F2E0629A7AAE6001F4043 /* WelcomeScreen */ = {
 			isa = PBXGroup;
 			children = (
 				EE0F2E0729A7AB39001F4043 /* WelcomeScreenViewController.swift */,
@@ -133,7 +133,7 @@
 				EEE3098F29B1E70300F181A1 /* WelcomeScreenModel.swift */,
 				EEE3099129B1E71600F181A1 /* WelcomeScreenModule.swift */,
 			);
-			path = FirstScreen;
+			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 		EE42646529B4C8CC000BC4B8 /* MyPlaylistScreen */ = {
@@ -209,7 +209,7 @@
 				EEE3099829B32DC900F181A1 /* Fonts */,
 				EEC4B38328F1FBAD008BBD8C /* Extension */,
 				EE42646529B4C8CC000BC4B8 /* MyPlaylistScreen */,
-				EE0F2E0629A7AAE6001F4043 /* FirstScreen */,
+				EE0F2E0629A7AAE6001F4043 /* WelcomeScreen */,
 				EEC4B37A28F1EB5C008BBD8C /* MainScreen */,
 				EEBE6307290EBAFB00EA49FD /* PlayerScreen */,
 				EEC4B37128F1E9F3008BBD8C /* LaunchScreen.storyboard */,

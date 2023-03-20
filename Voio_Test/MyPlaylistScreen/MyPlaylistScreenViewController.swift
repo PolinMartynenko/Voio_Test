@@ -46,6 +46,8 @@ class MyPlaylistScreenViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: settings, style:.plain, target: nil, action: nil)
         
+        viewModel.onViewDidLoad()
+        
     }
     
     func setupCollectionView() {
@@ -146,7 +148,9 @@ class MyPlaylistScreenViewController: UIViewController {
 }
 
 extension MyPlaylistScreenViewController: MyPlaylistScreenViewModelDelegate {
-    
+    func reloadData() {
+        collectionView.reloadData()
+    }
 }
 
 extension MyPlaylistScreenViewController: UICollectionViewDelegate {
