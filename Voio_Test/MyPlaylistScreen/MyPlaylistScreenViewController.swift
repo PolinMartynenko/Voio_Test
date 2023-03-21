@@ -180,22 +180,23 @@ extension MyPlaylistScreenViewController: UICollectionViewDataSource {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
                 return UICollectionViewCell() }
-            let image = viewModel.firstSectionItems[indexPath.row]
-            cell.setupCell(colour: .red, image: UIImage(named: "1"))
+            let item = viewModel.firstSectionItems[indexPath.row]
+//            cell.setupCell(colour: .red, image: UIImage(named: "1"))
+            cell.setup(item)
             return cell
             
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
                 return UICollectionViewCell() }
             let image = viewModel.secondSectionItems[indexPath.row]
-            cell.setupCell(colour: .red, image: UIImage(named: "2"))
+//            cell.setupCell(colour: .red, image: UIImage(named: "2"))
             return cell
             
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
                 return UICollectionViewCell() }
             let image = viewModel.thirdSectionItems[indexPath.row]
-            cell.setupCell(colour: .red, image: UIImage(named: "3"))
+//            cell.setupCell(colour: .red, image: UIImage(named: "3"))
             return cell
             
         default:

@@ -36,6 +36,7 @@
 		EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B37D28F1EB8C008BBD8C /* HomeScreenModel.swift */; };
 		EEC4B38028F1EBA0008BBD8C /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B37F28F1EBA0008BBD8C /* HomeScreenViewModel.swift */; };
 		EEC4B38528F1FD0C008BBD8C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4B38428F1FD0C008BBD8C /* UIColorExtension.swift */; };
+		EED68AF129C9D37500B0F687 /* MyPlaylistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED68AF029C9D37500B0F687 /* MyPlaylistItem.swift */; };
 		EEE2FC6E29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2FC6D29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift */; };
 		EEE2FC7029BD10EA000CFDE5 /* MyPlaylistScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2FC6F29BD10EA000CFDE5 /* MyPlaylistScreenViewModel.swift */; };
 		EEE2FC7229BD10FE000CFDE5 /* MyPlaylistScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2FC7129BD10FE000CFDE5 /* MyPlaylistScreenViewController.swift */; };
@@ -83,6 +84,7 @@
 		EEC4B37D28F1EB8C008BBD8C /* HomeScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenModel.swift; sourceTree = "<group>"; };
 		EEC4B37F28F1EBA0008BBD8C /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		EEC4B38428F1FD0C008BBD8C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		EED68AF029C9D37500B0F687 /* MyPlaylistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistItem.swift; sourceTree = "<group>"; };
 		EEE2FC6D29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistScreenModel.swift; sourceTree = "<group>"; };
 		EEE2FC6F29BD10EA000CFDE5 /* MyPlaylistScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistScreenViewModel.swift; sourceTree = "<group>"; };
 		EEE2FC7129BD10FE000CFDE5 /* MyPlaylistScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistScreenViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				EEE2FC6D29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift */,
 				EE42646629B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift */,
 				EE4ABC0029C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift */,
+				EED68AF029C9D37500B0F687 /* MyPlaylistItem.swift */,
 			);
 			path = MyPlaylistScreen;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				EEE2FC7029BD10EA000CFDE5 /* MyPlaylistScreenViewModel.swift in Sources */,
 				EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */,
 				EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */,
+				EED68AF129C9D37500B0F687 /* MyPlaylistItem.swift in Sources */,
 				EEE3098E29B1E6D600F181A1 /* WelcomeScreenViewModel.swift in Sources */,
 				EEBE630B290EBB9400EA49FD /* PlayerScreenModel.swift in Sources */,
 				EEBE630F290EBBBB00EA49FD /* PlayerScreenViewController.swift in Sources */,

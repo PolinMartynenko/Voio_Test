@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class MyPlaylistCollectionViewCell: UICollectionViewCell {
     static let reuseId = "gallery_cell"
@@ -17,10 +18,22 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCell(colour: UIColor, image: UIImage?) {
-        self.backgroundColor = colour
-        self.imageView.image = image
+    func setup(_ playlistItem: MyPlaylistlItem) {
+        if let path = playlistItem.myPlaylist.snippet?.thumbnails?.medium?.url, let url = URL(string: path) {
+            imageView.sd_setImage(with: url, completed: nil)
+        }
+
+//        titleLabel.text = playlistItem.playlist.snippet?.channelTitle
+//
+//        if let subscribersCount = playlistItem.channelInfo?.statistics?.subscriberCount {
+//            subsciberCountLabel.text = "\(subscribersCount) подписчика"
+//        }
     }
+    
+//    func setupCell(colour: UIColor, image: UIImage?) {
+//        self.backgroundColor = colour
+//        self.imageView.image = image
+//    }
     
     override init(frame: CGRect) {
         super .init(frame: frame)

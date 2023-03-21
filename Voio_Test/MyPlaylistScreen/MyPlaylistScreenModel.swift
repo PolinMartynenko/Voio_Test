@@ -18,7 +18,7 @@ protocol MyPlaylistScreenModel {
 }
 
 protocol MyPlaylistScreenModelDelegate: AnyObject {
-    func didLoadPlaylist(_ items: [PlaylistlItem])
+    func didLoadPlaylist(_ items: [MyPlaylistlItem])
 }
 
 class MyPlaylistScreenModelImplementation: NSObject, MyPlaylistScreenModel {
@@ -41,7 +41,7 @@ class MyPlaylistScreenModelImplementation: NSObject, MyPlaylistScreenModel {
         }
     }
     
-    private func loadYoutubePlayList(q: String?, items: Int, completion: @escaping ([PlaylistlItem]) -> Void) {
+    private func loadYoutubePlayList(q: String?, items: Int, completion: @escaping ([MyPlaylistlItem]) -> Void) {
         let query = GTLRYouTubeQuery_PlaylistsList.query(withPart: "snippet")
         query.mine = true
         
@@ -54,11 +54,10 @@ class MyPlaylistScreenModelImplementation: NSObject, MyPlaylistScreenModel {
                 return
             }
             let items = listResponse.items ?? []
-//
-//            let completionItems = items.map({ playlist -> PlaylistlItem in
-//                PlaylistlItem(playlist: playlist, channelInfo: nil)
-//            })
-//            completion(completionItems)
+            let completionItems = items.map({ myPlaylist -> MyPlaylistlItem in
+                MyPlaylistlItem(myPlaylist: myPlaylist)
+            })
+            completion(completionItems)
         }
     }
 }

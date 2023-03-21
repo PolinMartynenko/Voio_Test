@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol MyPlaylistScreenViewModel {
-    var firstSectionItems: [PlaylistlItem] { get }
+    var firstSectionItems: [MyPlaylistlItem] { get }
     var secondSectionItems: [String] { get }
     var thirdSectionItems: [String] { get }
     
@@ -23,7 +23,7 @@ protocol MyPlaylistScreenViewModelDelegate: AnyObject {
 class MyPlaylistScreenViewModelImplementation: MyPlaylistScreenViewModel {
     weak var delegate: MyPlaylistScreenViewModelDelegate?
     var model: MyPlaylistScreenModel
-    var firstSectionItems: [PlaylistlItem] = []
+    var firstSectionItems: [MyPlaylistlItem] = []
     var secondSectionItems: [String] = ["2", "1", "1", "3", "2", "1", "1", "3"]
     var thirdSectionItems: [String] = ["2", "1", "1", "3", "2", "1"]
     
@@ -37,7 +37,7 @@ class MyPlaylistScreenViewModelImplementation: MyPlaylistScreenViewModel {
 }
 
 extension MyPlaylistScreenViewModelImplementation: MyPlaylistScreenModelDelegate {
-    func didLoadPlaylist(_ items: [PlaylistlItem]) {
+    func didLoadPlaylist(_ items: [MyPlaylistlItem]) {
         self.firstSectionItems = items
         delegate?.reloadData()
     }
