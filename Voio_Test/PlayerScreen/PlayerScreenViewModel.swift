@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol PlayerScreenViewModel {
-    var playListItem: PlaylistlItem { get }
+    var playerItem: PlayerItem { get }
     func viewDidLoad()
 }
 
@@ -19,17 +19,17 @@ protocol PlayerScreenViewModelDelegate: AnyObject {
 }
 
 class PlayerScreenViewModelImplementation: PlayerScreenViewModel {
-    var playListItem: PlaylistlItem
+    var playerItem: PlayerItem
     var model: PlayerScreenModel
     weak var delegate: PlayerScreenViewModelDelegate?
     
-    init(model:PlayerScreenModel, playListItem: PlaylistlItem) {
+    init(model:PlayerScreenModel, playerItem: PlayerItem) {
         self.model = model
-        self.playListItem = playListItem
+        self.playerItem = playerItem
     }
     
     func viewDidLoad() {
-        model.loadVideoData(playListItem)
+        model.loadVideoData(playerItem)
     }
 }
 

@@ -86,9 +86,9 @@ class HomeScreenViewController: UIViewController {
             return
         }
         
-        let playerVC = PlayerScreenModule.build(item)
-        present(playerVC, animated: true, completion: nil)
-        print("Touched")
+//        let playerVC = PlayerScreenModule.build(item, playerItem)
+//        present(playerVC, animated: true, completion: nil)
+//        print("Touched")
     }
     
     func setupCollectionView() {
@@ -260,11 +260,13 @@ extension HomeScreenViewController: UICollectionViewDelegate {
         
         viewModel.selectedItem = item
         
-        guard let item = viewModel.selectedItem else {
-            return
-        }
+        guard let item = viewModel.selectedItem,
+              let videoId = item.playlist.identifier?.videoId else {
+                  return
+              }
         
-        let playerVC = PlayerScreenModule.build(item)
+        let playerItem = PlayerItem(videoId: videoId)
+        let playerVC = PlayerScreenModule.build(playerItem)
         present(playerVC, animated: true, completion: nil)
     }
 }

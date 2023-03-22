@@ -48,9 +48,7 @@ class PlayerScreenViewController: UIViewController {
         setupHorizontalStackView()
         setupSliderForSound()
         
-        guard let videoId = viewModel.playListItem.playlist.identifier?.videoId else {
-            return
-        }
+       let videoId = viewModel.playerItem.videoId
         
         playerView.load(withVideoId: videoId)
         
@@ -118,7 +116,7 @@ class PlayerScreenViewController: UIViewController {
         setupSliderForVideo()
         setupTimeStackView()
         setupTitleVideoLabel()
-        setupSubscribersLabel()
+//        setupSubscribersLabel()
         
     }
     
@@ -177,21 +175,21 @@ class PlayerScreenViewController: UIViewController {
     }
     
     private func setupTitleVideoLabel() {
-        titleVideo.text = viewModel.playListItem.playlist.snippet?.channelTitle
+//        titleVideo.text = viewModel.playListItem.playlist.snippet?.channelTitle
         titleVideo.font = .boldSystemFont(ofSize: 30)
         titleVideo.textColor = .white
         titleVideo.translatesAutoresizingMaskIntoConstraints = false
         verticalStackView.addArrangedSubview(titleVideo)
     }
     
-    private func setupSubscribersLabel() {
-        if let subscribersCount =  viewModel.playListItem.channelInfo?.statistics?.subscriberCount {
-            subscribersLabel.text = "\(subscribersCount) подписчика" }
-        subscribersLabel.textColor = .white
-        subscribersLabel.translatesAutoresizingMaskIntoConstraints = false
-        verticalStackView.addArrangedSubview(subscribersLabel)
-    }
-    
+//    private func setupSubscribersLabel() {
+//        if let subscribersCount =  viewModel.playListItem.channelInfo?.statistics?.subscriberCount {
+//            subscribersLabel.text = "\(subscribersCount) подписчика" }
+//        subscribersLabel.textColor = .white
+//        subscribersLabel.translatesAutoresizingMaskIntoConstraints = false
+//        verticalStackView.addArrangedSubview(subscribersLabel)
+//    }
+//
     private func setupHorizontalStackView() {
         horizontalStackView.axis = .horizontal
         horizontalStackView.spacing = 40

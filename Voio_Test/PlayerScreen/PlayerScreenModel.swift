@@ -10,7 +10,7 @@ import UIKit
 import GoogleAPIClientForREST
 
 protocol PlayerScreenModel {
-    func loadVideoData(_ item: PlaylistlItem)
+    func loadVideoData(_ item: PlayerItem)
 }
 
 protocol PlayerScreenModelDelegate: AnyObject {
@@ -27,9 +27,9 @@ class PlayerScreenModelImplementation: PlayerScreenModel {
         self.youTubeServices.apiKey = "AIzaSyDJujfnsfXihGLQeHrKTIS4C1RlMMYdZi4"
     }
     
-    func loadVideoData(_ item: PlaylistlItem) {
+    func loadVideoData(_ item: PlayerItem) {
         let query = GTLRYouTubeQuery_VideosList.query(withPart: "contentDetails")
-        query.identifier = item.playlist.identifier?.videoId
+        query.identifier = item.videoId
 
         youTubeServices.executeQuery(query) { [weak self] ticket, response, error in
             guard let listResponse = response as? GTLRYouTube_VideoListResponse else {

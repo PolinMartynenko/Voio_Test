@@ -30,6 +30,7 @@ class MyPlaylistScreenViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .darkBackgroundColor
         setupCollectionView()
+        setupPlayerButton()
         
         navigationItem.title = "My Playlists"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -50,6 +51,34 @@ class MyPlaylistScreenViewController: UIViewController {
         
     }
     
+    func setupPlayerButton() {
+        playerButton.backgroundColor = .pinkColor
+        playerButton.layer.cornerRadius = 10
+        playerButton.setImage(UIImage(named: "Close&Open-1"), for: .normal)
+        view.addSubview(playerButton)
+        playerButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
+        playerButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            playerButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
+            playerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            playerButton.heightAnchor.constraint(equalToConstant: 45),
+            playerButton.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+        
+        playerButton.setNeedsLayout()
+        playerButton.layoutIfNeeded()
+    }
+    
+    @objc func playerButtonTouched(_ playerButton: UIButton){
+        guard let item = viewModel.selectedItem else {
+            return
+        }
+        
+//        let playerVC = PlayerScreenModule.build(item)
+//        present(playerVC, animated: true, completion: nil)
+//        print("Touched")
+    }
+    
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -66,9 +95,9 @@ class MyPlaylistScreenViewController: UIViewController {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
+        
         collectionView.collectionViewLayout = createCompositionalLayout()
     }
     
@@ -155,8 +184,24 @@ extension MyPlaylistScreenViewController: MyPlaylistScreenViewModelDelegate {
 
 extension MyPlaylistScreenViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            print("Collection view at row \(collectionView.tag) selected index path \(indexPath)")
+        var item:  MyPlaylistlItem?
+        switch indexPath.section {
+        case 0:
+            item = viewModel.firstSectionItems[indexPath.row]
+        default:
+            break
         }
+        
+        viewModel.selectedItem = item
+        
+        guard let item = viewModel.selectedItem else {
+            return
+        }
+        
+        
+//        let playerVC = PlayerScreenModule.build(item)
+//        present(playerVC, animated: true, completion: nil)
+    }
 }
 
 extension MyPlaylistScreenViewController: UICollectionViewDataSource {

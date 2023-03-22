@@ -48,6 +48,8 @@
 		EEE3099E29B32E0C00F181A1 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEE3099D29B32E0C00F181A1 /* Poppins-ExtraLight.ttf */; };
 		EEE309A029B32E2000F181A1 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEE3099F29B32E2000F181A1 /* Poppins-Regular.ttf */; };
 		EEE309A229B3A58100F181A1 /* FredokaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEE309A129B3A58100F181A1 /* FredokaOne-Regular.ttf */; };
+		EEF6B3DB29CB544E008D575C /* VideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF6B3DA29CB544E008D575C /* VideoData.swift */; };
+		EEF6B3DD29CB54A0008D575C /* PlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF6B3DC29CB54A0008D575C /* PlayerItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,8 @@
 		EEE3099D29B32E0C00F181A1 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
 		EEE3099F29B32E2000F181A1 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		EEE309A129B3A58100F181A1 /* FredokaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FredokaOne-Regular.ttf"; sourceTree = "<group>"; };
+		EEF6B3DA29CB544E008D575C /* VideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoData.swift; sourceTree = "<group>"; };
+		EEF6B3DC29CB54A0008D575C /* PlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +150,6 @@
 				EEE2FC6D29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift */,
 				EE42646629B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift */,
 				EE4ABC0029C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift */,
-				EED68AF029C9D37500B0F687 /* MyPlaylistItem.swift */,
 			);
 			path = MyPlaylistScreen;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				EE89268129B6421B0037B9D7 /* GoogleService-Info.plist */,
 				EEC4B36628F1E9F0008BBD8C /* AppDelegate.swift */,
 				EEC4B36828F1E9F0008BBD8C /* SceneDelegate.swift */,
+				EEF6B3D929CB53B0008D575C /* Entities */,
 				EEE3099829B32DC900F181A1 /* Fonts */,
 				EEC4B38328F1FBAD008BBD8C /* Extension */,
 				EE42646529B4C8CC000BC4B8 /* MyPlaylistScreen */,
@@ -231,7 +235,6 @@
 				EEC4B37F28F1EBA0008BBD8C /* HomeScreenViewModel.swift */,
 				EEC4B37D28F1EB8C008BBD8C /* HomeScreenModel.swift */,
 				EEC4B37B28F1EB7B008BBD8C /* HomeScreenModule.swift */,
-				EE880C8828FC45450030C91B /* PlaylistlItem.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -255,6 +258,17 @@
 				EEE309A129B3A58100F181A1 /* FredokaOne-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EEF6B3D929CB53B0008D575C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				EE880C8828FC45450030C91B /* PlaylistlItem.swift */,
+				EED68AF029C9D37500B0F687 /* MyPlaylistItem.swift */,
+				EEF6B3DA29CB544E008D575C /* VideoData.swift */,
+				EEF6B3DC29CB54A0008D575C /* PlayerItem.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,8 +420,10 @@
 				EE4ABC0129C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift in Sources */,
 				EEC4B38528F1FD0C008BBD8C /* UIColorExtension.swift in Sources */,
 				EEBE6306290E838F00EA49FD /* ThirdCollectionViewCell.swift in Sources */,
+				EEF6B3DB29CB544E008D575C /* VideoData.swift in Sources */,
 				EEC4B37E28F1EB8C008BBD8C /* HomeScreenModel.swift in Sources */,
 				EE0F2E0829A7AB39001F4043 /* WelcomeScreenViewController.swift in Sources */,
+				EEF6B3DD29CB54A0008D575C /* PlayerItem.swift in Sources */,
 				EEB4493C29AB4E2000E41F6E /* SearchScreenModel.swift in Sources */,
 				EEE3099229B1E71600F181A1 /* WelcomeScreenModule.swift in Sources */,
 				EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */,

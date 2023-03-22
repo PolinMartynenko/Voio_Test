@@ -13,6 +13,4 @@ struct PlaylistlItem {
     var channelInfo: GTLRYouTube_Channel?
 }
 
-struct VideoData {
-    let data: GTLRYouTube_Video
-}
+
