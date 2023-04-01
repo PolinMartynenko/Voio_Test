@@ -10,5 +10,5 @@ import GoogleAPIClientForREST
 
 struct MyPlaylistlItem {
     
-    var myPlaylist: GTLRYouTube_Playlist 
+    var myPlaylist: GTLRYouTube_Playlist
 }

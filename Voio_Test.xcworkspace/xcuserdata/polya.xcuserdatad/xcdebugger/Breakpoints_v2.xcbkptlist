@@ -3,4 +3,70 @@
    uuid = "D20DF83F-C736-40EC-AC30-046A00E485AD"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE8B5C7B-FFE7-40FB-8335-848C5B88B008"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Voio_Test/MyPlaylistScreen/MyPlaylistScreenViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "playerButtonTouched(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CE8B5C7B-FFE7-40FB-8335-848C5B88B008 - d232ad209b26bec8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Voio_Test.MyPlaylistScreenViewController.playerButtonTouched(__C.UIButton) -&gt; ()"
+                  moduleName = "Voio_Test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/polya/Learn/Voio_Test/Voio_Test/MyPlaylistScreen/MyPlaylistScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "CE8B5C7B-FFE7-40FB-8335-848C5B88B008 - d232ad209b26bec8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Voio_Test.MyPlaylistScreenViewController.playerButtonTouched(__C.UIButton) -&gt; ()"
+                  moduleName = "Voio_Test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/polya/Learn/Voio_Test/Voio_Test/MyPlaylistScreen/MyPlaylistScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "273">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8CE6F921-32CB-4F92-929B-C6C75361AFAA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Voio_Test/MyPlaylistScreen/MyPlaylistScreenModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "loadYouTubePlaylistItem(items:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

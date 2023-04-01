@@ -70,13 +70,14 @@ class MyPlaylistScreenViewController: UIViewController {
     }
     
     @objc func playerButtonTouched(_ playerButton: UIButton){
-        guard let item = viewModel.selectedItem else {
+        guard let item = viewModel.selectedItem, let id = viewModel.selectedItem?.myPlaylist.identifier else {
             return
         }
-        
-//        let playerVC = PlayerScreenModule.build(item)
-//        present(playerVC, animated: true, completion: nil)
-//        print("Touched")
+
+        let playerItem = PlayerItem(videoId: id)
+        let playerVC = PlayerScreenModule.build(playerItem)
+        present(playerVC, animated: true, completion: nil)
+        print("Touched")
     }
     
     func setupCollectionView() {
@@ -194,9 +195,10 @@ extension MyPlaylistScreenViewController: UICollectionViewDelegate {
         
         viewModel.selectedItem = item
         
-        guard let item = viewModel.selectedItem else {
-            return
-        }
+//        guard let item = viewModel.selectedItem,
+//              let videoId = item.myPlaylist else {
+//            return
+//        }
         
         
 //        let playerVC = PlayerScreenModule.build(item)
