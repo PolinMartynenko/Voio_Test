@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 import SDWebImage
+import GoogleAPIClientForREST
+import GoogleSignIn
+import FirebaseCore
+import FirebaseAuth
+import Firebase
+import FirebaseAnalytics
 
 class MyPlaylistCollectionViewCell: UICollectionViewCell {
     static let reuseId = "gallery_cell"
@@ -18,8 +24,8 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(_ playlistItem: MyPlaylistlItem) {
-        if let path = playlistItem.myPlaylist.snippet?.thumbnails?.medium?.url, let url = URL(string: path) {
+    func setup(_ playlistItem: GTLRYouTube_PlaylistItem) {
+        if let path = playlistItem.snippet?.thumbnails?.medium?.url, let url = URL(string: path) {
             imageView.sd_setImage(with: url, completed: nil)
         }
 

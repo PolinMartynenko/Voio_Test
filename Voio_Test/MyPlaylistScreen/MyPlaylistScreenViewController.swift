@@ -7,6 +7,12 @@
 
 import Foundation
 import UIKit
+import GoogleAPIClientForREST
+import GoogleSignIn
+import FirebaseCore
+import FirebaseAuth
+import Firebase
+import FirebaseAnalytics
 
 class MyPlaylistScreenViewController: UIViewController {
     
@@ -56,7 +62,7 @@ class MyPlaylistScreenViewController: UIViewController {
         playerButton.layer.cornerRadius = 10
         playerButton.setImage(UIImage(named: "Close&Open-1"), for: .normal)
         view.addSubview(playerButton)
-        playerButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
+//        playerButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
         playerButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             playerButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
@@ -69,16 +75,16 @@ class MyPlaylistScreenViewController: UIViewController {
         playerButton.layoutIfNeeded()
     }
     
-    @objc func playerButtonTouched(_ playerButton: UIButton){
-        guard let item = viewModel.selectedItem, let id = viewModel.selectedItem?.myPlaylist.identifier else {
-            return
-        }
-
-        let playerItem = PlayerItem(videoId: id)
-        let playerVC = PlayerScreenModule.build(playerItem)
-        present(playerVC, animated: true, completion: nil)
-        print("Touched")
-    }
+//    @objc func playerButtonTouched(_ playerButton: UIButton){
+//        guard let item = viewModel.selectedItem, let id = viewModel.selectedItem?.myPlaylist.identifier else {
+//            return
+//        }
+//
+//        let playerItem = PlayerItem(videoId: id)
+//        let playerVC = PlayerScreenModule.build(playerItem)
+//        present(playerVC, animated: true, completion: nil)
+//        print("Touched")
+//    }
     
     func setupCollectionView() {
         collectionView.dataSource = self
@@ -184,16 +190,16 @@ extension MyPlaylistScreenViewController: MyPlaylistScreenViewModelDelegate {
 }
 
 extension MyPlaylistScreenViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var item:  MyPlaylistlItem?
-        switch indexPath.section {
-        case 0:
-            item = viewModel.firstSectionItems[indexPath.row]
-        default:
-            break
-        }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        var item:  [GTLRYouTube_Playlist:[GTLRYouTube_PlaylistItem]]
+//        switch indexPath.section {
+//        case 0:
+//            item = viewModel.firstSectionItems
+//        default:
+//            break
+//        }
         
-        viewModel.selectedItem = item
+//        viewModel.selectedItem = item
         
 //        guard let item = viewModel.selectedItem,
 //              let videoId = item.myPlaylist else {
@@ -204,51 +210,34 @@ extension MyPlaylistScreenViewController: UICollectionViewDelegate {
 //        let playerVC = PlayerScreenModule.build(item)
 //        present(playerVC, animated: true, completion: nil)
     }
-}
+
 
 extension MyPlaylistScreenViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
+        return viewModel.sectionItems.keys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return viewModel.firstSectionItems.count
-        } else if section == 1 {
-            return viewModel.secondSectionItems.count
-        } else {
-            return viewModel.thirdSectionItems.count
+        let key = Array(viewModel.sectionItems.keys)[section]
+        if let values = viewModel.sectionItems[key] {
+            return values.count
         }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
+//        switch indexPath.section {
+//        case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
                 return UICollectionViewCell() }
-            let item = viewModel.firstSectionItems[indexPath.row]
-//            cell.setupCell(colour: .red, image: UIImage(named: "1"))
-            cell.setup(item)
+        let key = Array(viewModel.sectionItems.keys)[indexPath.section]
+        if let items = viewModel.sectionItems[key] {
+            cell.setup(items[indexPath.row])
             return cell
-            
-        case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
-                return UICollectionViewCell() }
-            let image = viewModel.secondSectionItems[indexPath.row]
-//            cell.setupCell(colour: .red, image: UIImage(named: "2"))
-            return cell
-            
-        case 2:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
-                return UICollectionViewCell() }
-            let image = viewModel.thirdSectionItems[indexPath.row]
-//            cell.setupCell(colour: .red, image: UIImage(named: "3"))
-            return cell
-            
-        default:
-            return UICollectionViewCell()
+
         }
+        return cell
         
     }
     

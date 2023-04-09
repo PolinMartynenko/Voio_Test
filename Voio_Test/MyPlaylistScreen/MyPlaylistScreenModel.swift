@@ -18,7 +18,7 @@ protocol MyPlaylistScreenModel {
 }
 
 protocol MyPlaylistScreenModelDelegate: AnyObject {
-    func didLoadPlaylist(_ items: [MyPlaylistlItem])
+    func didLoadPlaylist(_ items: [GTLRYouTube_Playlist:[GTLRYouTube_PlaylistItem]])
 }
 
 class MyPlaylistScreenModelImplementation: NSObject, MyPlaylistScreenModel {
@@ -41,7 +41,7 @@ class MyPlaylistScreenModelImplementation: NSObject, MyPlaylistScreenModel {
         }
     }
     
-    private func loadYoutubePlayList(q: String?, items: Int, completion: @escaping ([MyPlaylistlItem]) -> Void) {
+    private func loadYoutubePlayList(q: String?, items: Int, completion: @escaping ([GTLRYouTube_Playlist:[GTLRYouTube_PlaylistItem]]) -> Void) {
         // создаем запрос на загрузку плейлистов
         let query = GTLRYouTubeQuery_PlaylistsList.query(withPart: "snippet,id")
         //моих плейлистов
@@ -52,7 +52,7 @@ class MyPlaylistScreenModelImplementation: NSObject, MyPlaylistScreenModel {
         
         //выполняем запрос
         youTubeServices.executeQuery(query) { [weak self] ticket, response, error in
-            //этот комплише сработает как выполнится запрос
+            //этот комплишен сработает как выполнится запрос
             guard let listResponse = response as? GTLRYouTube_PlaylistListResponse else {
                 print("⭕️ List response has wrong type")
                 return
@@ -60,41 +60,50 @@ class MyPlaylistScreenModelImplementation: NSObject, MyPlaylistScreenModel {
             let playlistList = listResponse.items ?? []
             
             //загружаем видео из загруженных плейлистов
-            self?.loadYouTubePlaylistItem(items: playlistList, completion: { itmesResponse in
-                let playListItems = itmesResponse.items ?? []
+            self?.loadYouTubePlaylistItem(items: playlistList) { itmesResponse in
+                let playListItems = itmesResponse
                 
                 var playlistWithItems = [GTLRYouTube_Playlist:[GTLRYouTube_PlaylistItem]]()
                 for key in playlistList {
                     playlistWithItems[key] = playListItems.filter({ $0.snippet?.playlistId == key.identifier
                     })
                 }
-//                let firstSectionValue = playlistWithItems.filter { $0.key == items }.first?.value ?? []
-                
-            })
-            //            completion(completionItems)
+                completion(playlistWithItems)
+            }
         }
     }
     
-     func loadYouTubePlaylistItem(items: [GTLRYouTube_Playlist], completion: @escaping (GTLRYouTube_PlaylistItemListResponse) -> Void) {
+    func loadYouTubePlaylistItem(items: [GTLRYouTube_Playlist],
+                                 completion: @escaping ([GTLRYouTube_PlaylistItem]) -> Void) {
+
+        // передаем плейлисты
+        let group = DispatchGroup()
+        var playlistItems = [GTLRYouTube_PlaylistItem]()
+        for playlist in items {
+            group.enter()
             //создаем запрос на загрузку видео из плейлистов
             let query = GTLRYouTubeQuery_PlaylistItemsList.query(withPart: "snippet")
-            // передаем плейлисты
-            query.identifier = items.compactMap { $0.identifier }.joined(separator: ",")
-            
+            query.playlistId = playlist.identifier
             let token = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
             query.additionalHTTPHeaders = ["Authorization": "Bearer \(token!)"]
             
-            youTubeServices.executeQuery(query) { [weak self] ticket, response, error in
+            youTubeServices.executeQuery(query) { ticket, response, error in
                 guard let listResponse = response as? GTLRYouTube_PlaylistItemListResponse else {
                     print("⭕️ List response has wrong type")
                     return
                 }
-                
-                completion(listResponse)
+                playlistItems.append(contentsOf: listResponse.items ?? [])
+                group.leave()
             }
         }
         
+        group.notify(queue: DispatchQueue.main) {
+            completion(playlistItems)
+        }
+        
     }
+    
+}
 
 //extension GTLRYouTube_Playlist: Hashable {
 ////    override func hash(into hasher: inout Hasher) {
