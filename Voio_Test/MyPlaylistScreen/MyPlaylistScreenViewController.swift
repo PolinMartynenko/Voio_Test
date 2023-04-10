@@ -94,7 +94,7 @@ class MyPlaylistScreenViewController: UIViewController {
         
         collectionView.register(MyPlaylistCollectionViewCell.self, forCellWithReuseIdentifier: MyPlaylistCollectionViewCell.reuseId)
         
-        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
+        collectionView.register(MyPlaylistHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MyPlaylistHeaderCollectionReusableView.identifier)
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -109,9 +109,11 @@ class MyPlaylistScreenViewController: UIViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
-    
-        header.configure()
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MyPlaylistHeaderCollectionReusableView.identifier, for: indexPath) as! MyPlaylistHeaderCollectionReusableView
+        let playlist = Array(viewModel.sectionItems.keys)[indexPath.section]
+        let title = playlist.snippet?.title
+       
+        header.configure(text: title)
         return header
     }
     
@@ -121,7 +123,9 @@ class MyPlaylistScreenViewController: UIViewController {
             case 0: return self.firstLayoutSection()
             case 1: return self.secondLayoutSection()
             case 2: return self.thirdLayoutSection()
-            default: return self.secondLayoutSection()
+            case 3: return self.secondLayoutSection()
+            case 4: return self.thirdLayoutSection()
+            default: return self.firstLayoutSection()
             }
         }
     }
@@ -227,18 +231,13 @@ extension MyPlaylistScreenViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        switch indexPath.section {
-//        case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
-                return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlaylistCollectionViewCell.reuseId, for: indexPath) as? MyPlaylistCollectionViewCell else {
+            return UICollectionViewCell() }
         let key = Array(viewModel.sectionItems.keys)[indexPath.section]
         if let items = viewModel.sectionItems[key] {
             cell.setup(items[indexPath.row])
             return cell
-
         }
         return cell
-        
     }
-    
 }

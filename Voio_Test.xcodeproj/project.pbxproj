@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		763A8A82BE6124EC398DAB7E /* Pods_Voio_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */; };
 		EE0F2E0829A7AB39001F4043 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0F2E0729A7AB39001F4043 /* WelcomeScreenViewController.swift */; };
+		EE2986A729E443250053E98D /* MyPlaylistHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2986A629E443250053E98D /* MyPlaylistHeaderCollectionReusableView.swift */; };
 		EE42646729B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42646629B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift */; };
 		EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */; };
 		EE4ABC0129C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4ABC0029C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift */; };
@@ -57,6 +58,7 @@
 		636220453EBBF9B6B6F6985D /* Pods-Voio_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.debug.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.debug.xcconfig"; sourceTree = "<group>"; };
 		CBD3542FA29DB82094F484AC /* Pods-Voio_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.release.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.release.xcconfig"; sourceTree = "<group>"; };
 		EE0F2E0729A7AB39001F4043 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
+		EE2986A629E443250053E98D /* MyPlaylistHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		EE42646629B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistScreenModule.swift; sourceTree = "<group>"; };
 		EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundExtension.swift; sourceTree = "<group>"; };
 		EE4ABC0029C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				EEE2FC6D29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift */,
 				EE42646629B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift */,
 				EE4ABC0029C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift */,
+				EE2986A629E443250053E98D /* MyPlaylistHeaderCollectionReusableView.swift */,
 			);
 			path = MyPlaylistScreen;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				EEE2FC6E29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift in Sources */,
 				EEB4493A29AB4DFD00E41F6E /* SearchScreenModule.swift in Sources */,
 				EEB4493E29AB4E3000E41F6E /* SearchScreenViewModel.swift in Sources */,
+				EE2986A729E443250053E98D /* MyPlaylistHeaderCollectionReusableView.swift in Sources */,
 				EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */,
 				EEB4494029AB4E4000E41F6E /* SearchScreenViewController.swift in Sources */,
 				EE4ABC0129C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift in Sources */,

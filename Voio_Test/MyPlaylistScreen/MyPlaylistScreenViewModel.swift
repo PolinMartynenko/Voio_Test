@@ -16,8 +16,6 @@ import FirebaseAnalytics
 
 protocol MyPlaylistScreenViewModel {
     var sectionItems: [GTLRYouTube_Playlist:[GTLRYouTube_PlaylistItem]] { get }
-//    var secondSectionItems: [String] { get }
-//    var thirdSectionItems: [String] { get }
     var selectedItem: GTLRYouTube_PlaylistItem? { get set }
     
     func onViewDidLoad()
@@ -31,8 +29,6 @@ class MyPlaylistScreenViewModelImplementation: MyPlaylistScreenViewModel {
     weak var delegate: MyPlaylistScreenViewModelDelegate?
     var model: MyPlaylistScreenModel
     var sectionItems: [GTLRYouTube_Playlist:[GTLRYouTube_PlaylistItem]] = [:]
-//    var secondSectionItems: [String] = ["2", "1", "1", "3", "2", "1", "1", "3"]
-//    var thirdSectionItems: [String] = ["2", "1", "1", "3", "2", "1"]
     var selectedItem: GTLRYouTube_PlaylistItem? = nil
     
     init(model: MyPlaylistScreenModel) {
