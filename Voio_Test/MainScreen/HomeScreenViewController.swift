@@ -31,7 +31,7 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "YouTube API"
+        navigationItem.title = "YouTube Videous"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController

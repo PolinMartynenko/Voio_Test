@@ -194,26 +194,26 @@ extension MyPlaylistScreenViewController: MyPlaylistScreenViewModelDelegate {
 }
 
 extension MyPlaylistScreenViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        var item:  [GTLRYouTube_Playlist:[GTLRYouTube_PlaylistItem]]
-//        switch indexPath.section {
-//        case 0:
-//            item = viewModel.firstSectionItems
-//        default:
-//            break
-//        }
-        
-//        viewModel.selectedItem = item
-        
-//        guard let item = viewModel.selectedItem,
-//              let videoId = item.myPlaylist else {
-//            return
-//        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var item:  GTLRYouTube_PlaylistItem
+       let key = Array(viewModel.sectionItems.keys)[indexPath.row]
+        if let items = viewModel.sectionItems[key] {
+            viewModel.selectedItem = items[indexPath.row]
+        } else {
+            return
+        }
         
         
-//        let playerVC = PlayerScreenModule.build(item)
-//        present(playerVC, animated: true, completion: nil)
+    guard let items = viewModel.selectedItem,
+              let videoId = items.snippet?.resourceId?.videoId else {
+            return
+        }
+        
+        let playerItem = PlayerItem(videoId: videoId)
+        let playerVC = PlayerScreenModule.build(playerItem)
+        present(playerVC, animated: true, completion: nil)
     }
+}
 
 
 extension MyPlaylistScreenViewController: UICollectionViewDataSource {
@@ -240,4 +240,5 @@ extension MyPlaylistScreenViewController: UICollectionViewDataSource {
         }
         return cell
     }
+    
 }

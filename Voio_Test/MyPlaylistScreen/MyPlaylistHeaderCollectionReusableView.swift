@@ -22,7 +22,6 @@ class MyPlaylistHeaderCollectionReusableView: UICollectionReusableView {
     private let label: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-//        label.text = "kj"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 25)
         return label
