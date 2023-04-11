@@ -51,10 +51,15 @@ class MyPlaylistScreenViewController: UIViewController {
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: settings, style:.plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: settings, style:.plain, target: self, action: #selector(settingsButtonTouched))
         
         viewModel.onViewDidLoad()
         
+    }
+    
+    @objc func settingsButtonTouched() {
+        let settingsVC = SettingsModule.build()
+        navigationController?.pushViewController(settingsVC, animated: true)
     }
     
     func setupPlayerButton() {

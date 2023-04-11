@@ -10,6 +10,10 @@
 		763A8A82BE6124EC398DAB7E /* Pods_Voio_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A3F1AD9CB08890FF90CF6A /* Pods_Voio_Test.framework */; };
 		EE0F2E0829A7AB39001F4043 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0F2E0729A7AB39001F4043 /* WelcomeScreenViewController.swift */; };
 		EE2986A729E443250053E98D /* MyPlaylistHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2986A629E443250053E98D /* MyPlaylistHeaderCollectionReusableView.swift */; };
+		EE40F52329E5ABD10082B4BB /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40F52229E5ABD10082B4BB /* SettingsModule.swift */; };
+		EE40F52529E5ABF60082B4BB /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40F52429E5ABF60082B4BB /* SettingsModel.swift */; };
+		EE40F52729E5AC070082B4BB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40F52629E5AC070082B4BB /* SettingsViewModel.swift */; };
+		EE40F52929E5AC170082B4BB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40F52829E5AC170082B4BB /* SettingsViewController.swift */; };
 		EE42646729B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42646629B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift */; };
 		EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */; };
 		EE4ABC0129C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4ABC0029C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift */; };
@@ -59,6 +63,10 @@
 		CBD3542FA29DB82094F484AC /* Pods-Voio_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voio_Test.release.xcconfig"; path = "Target Support Files/Pods-Voio_Test/Pods-Voio_Test.release.xcconfig"; sourceTree = "<group>"; };
 		EE0F2E0729A7AB39001F4043 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		EE2986A629E443250053E98D /* MyPlaylistHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		EE40F52229E5ABD10082B4BB /* SettingsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModule.swift; sourceTree = "<group>"; };
+		EE40F52429E5ABF60082B4BB /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		EE40F52629E5AC070082B4BB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		EE40F52829E5AC170082B4BB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EE42646629B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistScreenModule.swift; sourceTree = "<group>"; };
 		EE485DCA290FFBB1004FAB25 /* SoundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundExtension.swift; sourceTree = "<group>"; };
 		EE4ABC0029C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +152,17 @@
 			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
+		EE40F52129E5ABA20082B4BB /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EE40F52829E5AC170082B4BB /* SettingsViewController.swift */,
+				EE40F52629E5AC070082B4BB /* SettingsViewModel.swift */,
+				EE40F52429E5ABF60082B4BB /* SettingsModel.swift */,
+				EE40F52229E5ABD10082B4BB /* SettingsModule.swift */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
 		EE42646529B4C8CC000BC4B8 /* MyPlaylistScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +237,7 @@
 				EEF6B3D929CB53B0008D575C /* Entities */,
 				EEE3099829B32DC900F181A1 /* Fonts */,
 				EEC4B38328F1FBAD008BBD8C /* Extension */,
+				EE40F52129E5ABA20082B4BB /* SettingsScreen */,
 				EE42646529B4C8CC000BC4B8 /* MyPlaylistScreen */,
 				EE0F2E0629A7AAE6001F4043 /* WelcomeScreen */,
 				EEC4B37A28F1EB5C008BBD8C /* MainScreen */,
@@ -417,10 +437,12 @@
 				EEBE6302290DAC7800EA49FD /* HeaderCollectionReusableView.swift in Sources */,
 				EEE2FC6E29BD10DC000CFDE5 /* MyPlaylistScreenModel.swift in Sources */,
 				EEB4493A29AB4DFD00E41F6E /* SearchScreenModule.swift in Sources */,
+				EE40F52729E5AC070082B4BB /* SettingsViewModel.swift in Sources */,
 				EEB4493E29AB4E3000E41F6E /* SearchScreenViewModel.swift in Sources */,
 				EE2986A729E443250053E98D /* MyPlaylistHeaderCollectionReusableView.swift in Sources */,
 				EEB5E6F728F3454100F2803E /* HomeScreenCollectionViewCell.swift in Sources */,
 				EEB4494029AB4E4000E41F6E /* SearchScreenViewController.swift in Sources */,
+				EE40F52529E5ABF60082B4BB /* SettingsModel.swift in Sources */,
 				EE4ABC0129C38A8300F6FBC0 /* MyPlaylistCollectionViewCell.swift in Sources */,
 				EEC4B38528F1FD0C008BBD8C /* UIColorExtension.swift in Sources */,
 				EEBE6306290E838F00EA49FD /* ThirdCollectionViewCell.swift in Sources */,
@@ -433,10 +455,12 @@
 				EE880C8928FC45450030C91B /* PlaylistlItem.swift in Sources */,
 				EEC4B36B28F1E9F0008BBD8C /* HomeScreenViewController.swift in Sources */,
 				EEC4B36728F1E9F0008BBD8C /* AppDelegate.swift in Sources */,
+				EE40F52929E5AC170082B4BB /* SettingsViewController.swift in Sources */,
 				EE42646729B4C8F9000BC4B8 /* MyPlaylistScreenModule.swift in Sources */,
 				EEE2FC7029BD10EA000CFDE5 /* MyPlaylistScreenViewModel.swift in Sources */,
 				EEBE6304290DCAFE00EA49FD /* SecondCollectionViewCell.swift in Sources */,
 				EE485DCB290FFBB1004FAB25 /* SoundExtension.swift in Sources */,
+				EE40F52329E5ABD10082B4BB /* SettingsModule.swift in Sources */,
 				EED68AF129C9D37500B0F687 /* MyPlaylistItem.swift in Sources */,
 				EEE3098E29B1E6D600F181A1 /* WelcomeScreenViewModel.swift in Sources */,
 				EEBE630B290EBB9400EA49FD /* PlayerScreenModel.swift in Sources */,
