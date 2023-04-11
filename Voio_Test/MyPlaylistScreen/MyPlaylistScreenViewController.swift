@@ -196,7 +196,7 @@ extension MyPlaylistScreenViewController: MyPlaylistScreenViewModelDelegate {
 extension MyPlaylistScreenViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var item:  GTLRYouTube_PlaylistItem
-       let key = Array(viewModel.sectionItems.keys)[indexPath.row]
+       let key = Array(viewModel.sectionItems.keys)[indexPath.section]
         if let items = viewModel.sectionItems[key] {
             viewModel.selectedItem = items[indexPath.row]
         } else {
