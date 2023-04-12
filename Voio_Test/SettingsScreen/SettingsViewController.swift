@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     var viewModel: SettingsViewModel
+    let backArrowImage = UIImage(named: "left-arrow")
     
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -23,6 +24,23 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .darkBackgroundColor
+        
+        navigationItem.title = "Settings"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        setupBackArrowButton()
+        
+    }
+    
+    private func setupBackArrowButton() {
+        let arrowBackButton = UIBarButtonItem(image: backArrowImage, style:.plain, target: self, action: #selector(backToMyPlaylists))
+        arrowBackButton.tintColor = .pinkColor
+        navigationItem.leftBarButtonItem = arrowBackButton
+    }
+    
+    @objc func backToMyPlaylists() {
+        navigationController?.popViewController(animated: true)
     }
     
 }
