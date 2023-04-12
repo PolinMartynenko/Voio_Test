@@ -7,10 +7,12 @@
 
 import Foundation
 import UIKit
+import GoogleSignIn
 
 class SettingsViewController: UIViewController {
     var viewModel: SettingsViewModel
     let backArrowImage = UIImage(named: "left-arrow")
+    let signOutButton = UIButton()
     
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -30,6 +32,7 @@ class SettingsViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         
         setupBackArrowButton()
+        setupSignOutButton()
         
     }
     
@@ -41,6 +44,29 @@ class SettingsViewController: UIViewController {
     
     @objc func backToMyPlaylists() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    private func setupSignOutButton() {
+        signOutButton.setTitle("Sign Out", for: .normal)
+        signOutButton.titleLabel?.font = UIFont(name: "Poppins-Regular", size: 20)
+        signOutButton.setTitleColor(.darkBackgroundColor, for: .normal)
+        signOutButton.backgroundColor = .pinkColor
+        signOutButton.layer.cornerRadius = 15
+        signOutButton.addTarget(self, action: #selector(self.touchSignOut), for: .touchUpInside)
+        view.addSubview(signOutButton)
+        signOutButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            signOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signOutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            signOutButton.heightAnchor.constraint(equalToConstant: 60),
+            signOutButton.widthAnchor.constraint(equalToConstant: 150)
+        ])
+    }
+    
+    @objc func touchSignOut() {
+         GIDSignIn.sharedInstance().signOut()
+         
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
