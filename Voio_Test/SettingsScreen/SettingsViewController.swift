@@ -8,11 +8,16 @@
 import Foundation
 import UIKit
 import GoogleSignIn
+import SDWebImage
 
 class SettingsViewController: UIViewController {
     var viewModel: SettingsViewModel
     let backArrowImage = UIImage(named: "left-arrow")
     let signOutButton = UIButton()
+    let userImageView = UIImageView()
+    let stackViewForNameAndSurname = UIStackView()
+    let nameLabel = UILabel()
+    let surnameLabel = UILabel()
     
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -31,8 +36,11 @@ class SettingsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.hidesSearchBarWhenScrolling = false
         
+//        setupUserUmageView()
+        setupStackViewForNameAndSurname()
         setupBackArrowButton()
         setupSignOutButton()
+        
         
     }
     
@@ -67,6 +75,57 @@ class SettingsViewController: UIViewController {
          GIDSignIn.sharedInstance().signOut()
          
         self.dismiss(animated: true, completion: nil)
+    }
+    
+//    private func setupUserUmageView() {
+////        userImageView.sd_setImage(with: URL())
+//        view.addSubview(userImageView)
+//        userUmageView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            userUmageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            userUmageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            userUmageView.heightAnchor.constraint(equalToConstant: 150),
+//            userUmageView.widthAnchor.constraint(equalToConstant: 150)
+//        ])
+//    }
+    
+    private func setupStackViewForNameAndSurname() {
+        stackViewForNameAndSurname.axis = .vertical
+        stackViewForNameAndSurname.spacing = 15
+        stackViewForNameAndSurname.alignment = .center
+        view.addSubview(stackViewForNameAndSurname)
+        stackViewForNameAndSurname.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackViewForNameAndSurname.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            stackViewForNameAndSurname.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            stackViewForNameAndSurname.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+        ])
+        
+        setupNameLabel()
+        setupSurnameLabel()
+        
+    }
+    
+    private func setupNameLabel() {
+        nameLabel.text = "fdfvdfvfnvdnvkl"
+        nameLabel.backgroundColor = .pinkColor
+        nameLabel.textColor = .white
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        stackViewForNameAndSurname.addArrangedSubview(nameLabel)
+        NSLayoutConstraint.activate([
+            nameLabel.heightAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+    
+    private func setupSurnameLabel() {
+        surnameLabel.text = "fdfvdfvfnvdnvkl"
+        surnameLabel.backgroundColor = .pinkColor
+        surnameLabel.textColor = .white
+        surnameLabel.translatesAutoresizingMaskIntoConstraints = false
+        stackViewForNameAndSurname.addArrangedSubview(surnameLabel)
+        NSLayoutConstraint.activate([
+            surnameLabel.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
     
 }
