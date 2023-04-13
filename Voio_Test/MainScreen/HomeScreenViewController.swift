@@ -14,6 +14,7 @@ class HomeScreenViewController: UIViewController {
     var viewModel: HomeScreenViewModel
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     let playerButton = UIButton()
+    let backArrowImage = UIImage(named: "left-arrow")
     let searchScreenVC = SearchScreenModule.build()
     lazy var searchController = UISearchController(searchResultsController: searchScreenVC)
     let navigationBarAppearance = UINavigationBarAppearance()
@@ -49,6 +50,7 @@ class HomeScreenViewController: UIViewController {
         
 
         view.backgroundColor = .darkBackgroundColor
+        setupBackArrowButton()
         setupCollectionView()
         setupPlayerButton()
         viewModel.viewDidLoad()
@@ -62,6 +64,16 @@ class HomeScreenViewController: UIViewController {
 //        vc?.view.backgroundColor = .yellow
 //        print(text)
 //    }
+    
+    private func setupBackArrowButton() {
+        let arrowBackButton = UIBarButtonItem(image: backArrowImage, style:.plain, target: self, action: #selector(backToWelcomeScreen))
+        arrowBackButton.tintColor = .pinkColor
+        navigationItem.leftBarButtonItem = arrowBackButton
+    }
+    
+    @objc func backToWelcomeScreen() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func setupPlayerButton() {
         playerButton.backgroundColor = .pinkColor

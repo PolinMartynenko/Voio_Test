@@ -37,8 +37,6 @@ class SettingsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.hidesSearchBarWhenScrolling = false
         
-//        setupUserImageView()
-//        setupStackViewForNameAndSurname()
         setupBackArrowButton()
         setupSignOutButton()
         setupStackViewForAllElements()
