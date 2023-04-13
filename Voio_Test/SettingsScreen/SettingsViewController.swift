@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController {
     let stackViewForNameAndSurname = UIStackView()
     let nameLabel = UILabel()
     let surnameLabel = UILabel()
+    let stackViewForAllElements = UIStackView()
     
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -36,12 +37,18 @@ class SettingsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.hidesSearchBarWhenScrolling = false
         
-//        setupUserUmageView()
-        setupStackViewForNameAndSurname()
+//        setupUserImageView()
+//        setupStackViewForNameAndSurname()
         setupBackArrowButton()
         setupSignOutButton()
+        setupStackViewForAllElements()
         
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        userImageView.layer.cornerRadius = userImageView.frame.size.width/2
+
     }
     
     private func setupBackArrowButton() {
@@ -77,29 +84,29 @@ class SettingsViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-//    private func setupUserUmageView() {
-////        userImageView.sd_setImage(with: URL())
-//        view.addSubview(userImageView)
-//        userUmageView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            userUmageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            userUmageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            userUmageView.heightAnchor.constraint(equalToConstant: 150),
-//            userUmageView.widthAnchor.constraint(equalToConstant: 150)
-//        ])
-//    }
+    private func setupStackViewForAllElements() {
+        stackViewForAllElements.axis = .horizontal
+        stackViewForAllElements.spacing = 15
+        stackViewForAllElements.alignment = .center
+        view.addSubview(stackViewForAllElements)
+        stackViewForAllElements.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackViewForAllElements.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            stackViewForAllElements.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            stackViewForAllElements.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+        ])
+        
+        setupUserImageView()
+        setupStackViewForNameAndSurname()
+        
+    }
     
     private func setupStackViewForNameAndSurname() {
         stackViewForNameAndSurname.axis = .vertical
         stackViewForNameAndSurname.spacing = 15
-        stackViewForNameAndSurname.alignment = .center
-        view.addSubview(stackViewForNameAndSurname)
+        stackViewForNameAndSurname.alignment = .leading
+        stackViewForAllElements.addArrangedSubview(stackViewForNameAndSurname)
         stackViewForNameAndSurname.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackViewForNameAndSurname.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            stackViewForNameAndSurname.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            stackViewForNameAndSurname.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
-        ])
         
         setupNameLabel()
         setupSurnameLabel()
@@ -107,24 +114,42 @@ class SettingsViewController: UIViewController {
     }
     
     private func setupNameLabel() {
-        nameLabel.text = "fdfvdfvfnvdnvkl"
-        nameLabel.backgroundColor = .pinkColor
+        let userName = GIDSignIn.sharedInstance().currentUser.profile.givenName
+        nameLabel.text = userName
+        nameLabel.font = UIFont(name: "Poppins-Regular", size: 25)
+//        nameLabel.backgroundColor = .pinkColor
         nameLabel.textColor = .white
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         stackViewForNameAndSurname.addArrangedSubview(nameLabel)
         NSLayoutConstraint.activate([
-            nameLabel.heightAnchor.constraint(equalToConstant: 60)
+            nameLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
     private func setupSurnameLabel() {
-        surnameLabel.text = "fdfvdfvfnvdnvkl"
-        surnameLabel.backgroundColor = .pinkColor
+        let userSurname = GIDSignIn.sharedInstance().currentUser.profile.familyName
+        surnameLabel.text = userSurname
+        surnameLabel.font = UIFont(name: "Poppins-Regular", size: 25)
+//        surnameLabel.backgroundColor = .pinkColor
         surnameLabel.textColor = .white
         surnameLabel.translatesAutoresizingMaskIntoConstraints = false
         stackViewForNameAndSurname.addArrangedSubview(surnameLabel)
         NSLayoutConstraint.activate([
-            surnameLabel.heightAnchor.constraint(equalToConstant: 60)
+            surnameLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+    }
+    
+    private func setupUserImageView() {
+        let userImage = GIDSignIn.sharedInstance().currentUser.profile.imageURL(withDimension: 320)
+        if let userString = userImage?.absoluteString {
+            userImageView.sd_setImage(with: URL(string: userString), completed: nil)
+        }
+        userImageView.clipsToBounds = true
+        stackViewForAllElements.addArrangedSubview(userImageView)
+        userImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            userImageView.heightAnchor.constraint(equalToConstant: 170),
+            userImageView.widthAnchor.constraint(equalToConstant: 170)
         ])
     }
     

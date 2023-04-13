@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import UIKit
+import GoogleSignIn
+
 
 protocol SettingsModel {
     
@@ -20,4 +21,5 @@ class SettingsModelImplementation: SettingsModel {
     
     weak var delegate: SettingsModelDelegate?
     
+   
 }
