@@ -19,6 +19,7 @@ class SettingsViewController: UIViewController {
     let nameLabel = UILabel()
     let surnameLabel = UILabel()
     let stackViewForAllElements = UIStackView()
+    let emailLabel = UILabel()
     
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -38,8 +39,10 @@ class SettingsViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         
         setupBackArrowButton()
-        setupSignOutButton()
         setupStackViewForAllElements()
+        setupSignOutButton()
+        setupEmailLabel()
+        
         
     }
     
@@ -57,29 +60,6 @@ class SettingsViewController: UIViewController {
     
     @objc func backToMyPlaylists() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    private func setupSignOutButton() {
-        signOutButton.setTitle("Sign Out", for: .normal)
-        signOutButton.titleLabel?.font = UIFont(name: "Poppins-Regular", size: 20)
-        signOutButton.setTitleColor(.darkBackgroundColor, for: .normal)
-        signOutButton.backgroundColor = .pinkColor
-        signOutButton.layer.cornerRadius = 15
-        signOutButton.addTarget(self, action: #selector(self.touchSignOut), for: .touchUpInside)
-        view.addSubview(signOutButton)
-        signOutButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            signOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signOutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            signOutButton.heightAnchor.constraint(equalToConstant: 60),
-            signOutButton.widthAnchor.constraint(equalToConstant: 150)
-        ])
-    }
-    
-    @objc func touchSignOut() {
-         GIDSignIn.sharedInstance().signOut()
-         
-        self.dismiss(animated: true, completion: nil)
     }
     
     private func setupStackViewForAllElements() {
@@ -108,8 +88,7 @@ class SettingsViewController: UIViewController {
         
         setupNameLabel()
         setupSurnameLabel()
-        
-    }
+        }
     
     private func setupNameLabel() {
         let userName = GIDSignIn.sharedInstance().currentUser.profile.givenName
@@ -137,6 +116,21 @@ class SettingsViewController: UIViewController {
         ])
     }
     
+    private func setupEmailLabel() {
+        let userEmail = GIDSignIn.sharedInstance().currentUser.profile.email
+        emailLabel.text = userEmail
+        emailLabel.font = UIFont(name: "Poppins-Regular", size: 17)
+        emailLabel.textColor = .white
+        emailLabel.textAlignment = .center
+        emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(emailLabel)
+        NSLayoutConstraint.activate([
+            emailLabel.topAnchor.constraint(equalTo: stackViewForAllElements.bottomAnchor, constant: 25),
+            emailLabel.bottomAnchor.constraint(equalTo: signOutButton.topAnchor, constant: -30),
+            emailLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
     private func setupUserImageView() {
         let userImage = GIDSignIn.sharedInstance().currentUser.profile.imageURL(withDimension: 320)
         if let userString = userImage?.absoluteString {
@@ -149,6 +143,28 @@ class SettingsViewController: UIViewController {
             userImageView.heightAnchor.constraint(equalToConstant: 170),
             userImageView.widthAnchor.constraint(equalToConstant: 170)
         ])
+    }
+    
+    private func setupSignOutButton() {
+        signOutButton.setTitle("Sign Out", for: .normal)
+        signOutButton.titleLabel?.font = UIFont(name: "Poppins-Regular", size: 20)
+        signOutButton.setTitleColor(.darkBackgroundColor, for: .normal)
+        signOutButton.backgroundColor = .pinkColor
+        signOutButton.layer.cornerRadius = 15
+        signOutButton.addTarget(self, action: #selector(self.touchSignOut), for: .touchUpInside)
+        view.addSubview(signOutButton)
+        signOutButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            signOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signOutButton.heightAnchor.constraint(equalToConstant: 60),
+            signOutButton.widthAnchor.constraint(equalToConstant: 150)
+        ])
+    }
+    
+    @objc func touchSignOut() {
+         GIDSignIn.sharedInstance().signOut()
+         
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
