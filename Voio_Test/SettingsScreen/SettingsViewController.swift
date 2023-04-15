@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
     let surnameLabel = UILabel()
     let stackViewForAllElements = UIStackView()
     let emailLabel = UILabel()
+    let privacyLabel = UILabel()
     
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -42,6 +43,7 @@ class SettingsViewController: UIViewController {
         setupStackViewForAllElements()
         setupSignOutButton()
         setupEmailLabel()
+        setupPrivacyLabel()
         
         
     }
@@ -165,6 +167,20 @@ class SettingsViewController: UIViewController {
          GIDSignIn.sharedInstance().signOut()
          
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func setupPrivacyLabel() {
+        privacyLabel.text = "Privacy Policy • Terms of Service"
+        privacyLabel.font = UIFont(name: "Poppins-Regular", size: 13)
+        privacyLabel.textColor = .white
+        privacyLabel.layer.opacity = 0.5
+        privacyLabel.textAlignment = .center
+        privacyLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(privacyLabel)
+        NSLayoutConstraint.activate([
+            privacyLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            privacyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
     
 }
