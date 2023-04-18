@@ -122,8 +122,6 @@ class PlayerScreenViewController: UIViewController {
     
     private func setupSliderForVideo() {
         sliderForVideo.frame = CGRect(x: 0, y: 0, width: 100, height: 23)
-        sliderForVideo.minimumValue = 0
-        sliderForVideo.maximumValue = 100
         sliderForVideo.isContinuous = true
         sliderForVideo.setThumbImage(UIImage(named: "vertical-line"), for: .normal)
         sliderForVideo.tintColor = .white
@@ -139,8 +137,11 @@ class PlayerScreenViewController: UIViewController {
         
     }
     
-    @objc func changeSliderForVideo(sender: UISlider){
-        print("change")
+    @objc func changeSliderForVideo(sender: UISlider) {
+        playerView.duration { duration, error in
+            let seekTime = duration * Double(sender.value)
+            self.playerView.seek(toSeconds: Float(seekTime), allowSeekAhead: true)
+        }
     }
     
     
