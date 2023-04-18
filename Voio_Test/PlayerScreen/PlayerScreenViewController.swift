@@ -272,9 +272,31 @@ extension PlayerScreenViewController: PlayerScreenViewModelDelegate {
             return
         }
         
-        let components = duration.components(separatedBy: .letters)
+        let timeString = duration
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
         
-        finishTimeLebel.text = components.joined(separator: ":")
+        if let timeInterval = duration.parseDuration(), let timeStringFormatter = formatter.string(from: timeInterval) {
+            print(timeStringFormatter)
+            finishTimeLebel.text = timeStringFormatter
+        }
     }
 }
 
+extension String {
+    func parseDuration() -> TimeInterval? {
+        let regex = try! NSRegularExpression(pattern: "^PT((\\d+)H)?((\\d+)M)?((\\d+)S)?$")
+        let matches = regex.matches(in: self, range: NSRange(startIndex..., in: self))
+        guard let match = matches.first else {
+            return nil
+        }
+        let hoursRange = Range(match.range(at: 2), in: self)
+        let minutesRange = Range(match.range(at: 4), in: self)
+        let secondsRange = Range(match.range(at: 6), in: self)
+        let hours = hoursRange.flatMap { Int(self[$0]) } ?? 0
+        let minutes = minutesRange.flatMap { Int(self[$0]) } ?? 0
+        let seconds = secondsRange.flatMap { Int(self[$0]) } ?? 0
+        return TimeInterval(hours * 3600 + minutes * 60 + seconds)
+    }
+}
