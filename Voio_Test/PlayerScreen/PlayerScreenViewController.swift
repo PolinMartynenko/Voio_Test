@@ -216,7 +216,10 @@ class PlayerScreenViewController: UIViewController {
     private func setupPastVideoButton() {
         horizontalStackView.addArrangedSubview(pastVieoButton)
         pastVieoButton.setImage(UIImage(named: "Prev"), for: .normal)
-//        pastVieoButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
+        pastVieoButton.addAction(UIAction { [weak self] _ in
+            self?.viewModel.playPreviousVideo()
+            self?.invalidatePlayer()
+        }, for: .touchUpInside)
         pastVieoButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -227,7 +230,7 @@ class PlayerScreenViewController: UIViewController {
         pauseVideoButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    @objc func playPauseButtonTouched(_ playerPauseButton: UIButton){
+    @objc func playPauseButtonTouched() {
         if isVideoPlaying {
             playerView.pauseVideo()
             isVideoPlaying = false
@@ -246,7 +249,8 @@ class PlayerScreenViewController: UIViewController {
                 let step = 1.0 / duration
                 self?.sliderForVideo.value += Float(step)
                 self?.currentDurationIsSeconds += 1
-                self?.startTimeLabel.text = "\(DateComponentsFormatter.durationFromTimeInterval.string(from: self?.currentDurationIsSeconds ?? 0)!)"
+                let formatter: DateComponentsFormatter = duration > 60 * 60 ? .durationHoursFromTimeInterval : .durationFromTimeInterval
+                self?.startTimeLabel.text = "\(formatter.string(from: self?.currentDurationIsSeconds ?? 0)!)"
             })
         }
         print("Touched")
@@ -255,7 +259,10 @@ class PlayerScreenViewController: UIViewController {
     private func setupNextVideoButton() {
         horizontalStackView.addArrangedSubview(nextVideoButton)
         nextVideoButton.setImage(UIImage(named: "Next"), for: .normal)
-//        pastVieoButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
+        nextVideoButton.addAction(UIAction { [weak self] _ in
+            self?.viewModel.playNextVideo()
+            self?.invalidatePlayer()
+        }, for: .touchUpInside)
         nextVideoButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -281,6 +288,16 @@ class PlayerScreenViewController: UIViewController {
         MPVolumeView.setVolume(sender.value)
     }
     
+    private func invalidatePlayer() {
+        self.playerView.pauseVideo()
+        self.isVideoPlaying = false
+        self.pauseVideoButton.setImage(UIImage(named: "Play"), for: .normal)
+        self.durationTimer?.invalidate()
+        self.sliderForVideo.value = 0
+        self.currentDurationIsSeconds = 0
+        self.startTimeLabel.text = "00:00"
+        self.playerView.load(withVideoId: self.viewModel.playerItem.videoId)
+    }
 }
 
 extension PlayerScreenViewController: PlayerScreenViewModelDelegate {
@@ -334,4 +351,13 @@ extension DateComponentsFormatter {
         formatter.zeroFormattingBehavior = .pad
         return formatter
     }
+
+    static var durationHoursFromTimeInterval: DateComponentsFormatter {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }
+
 }

@@ -215,7 +215,9 @@ extension MyPlaylistScreenViewController: UICollectionViewDelegate {
         }
         
         let playerItem = PlayerItem(videoId: videoId)
-        let playerVC = PlayerScreenModule.build(playerItem)
+        
+        
+        let playerVC = PlayerScreenModule.build(playerItem, items: [])
         present(playerVC, animated: true, completion: nil)
     }
 }

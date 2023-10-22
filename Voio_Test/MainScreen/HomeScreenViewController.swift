@@ -259,17 +259,19 @@ extension HomeScreenViewController: UICollectionViewDataSource {
 extension HomeScreenViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var item: PlaylistlItem?
+        var items = [PlaylistlItem]()
         switch indexPath.section {
         case 0:
-            item = viewModel.firstSectionItems[indexPath.row]
+            items = viewModel.firstSectionItems
         case 1:
-            item = viewModel.secondSectionItems[indexPath.row]
+            items = viewModel.secondSectionItems
         case 2:
-            item = viewModel.thirdSectionItems[indexPath.row]
+            items = viewModel.thirdSectionItems
         default:
             break
         }
         
+        item = items[indexPath.row]
         viewModel.selectedItem = item
         
         guard let item = viewModel.selectedItem,
@@ -277,8 +279,17 @@ extension HomeScreenViewController: UICollectionViewDelegate {
                   return
               }
         
+        
         let playerItem = PlayerItem(videoId: videoId)
-        let playerVC = PlayerScreenModule.build(playerItem)
+        let playterItems = items.compactMap { playlistItem -> PlayerItem? in
+            guard let videoID = playlistItem.playlist.identifier?.videoId else {
+                return nil
+            }
+            
+            return PlayerItem(videoId: videoID)
+        }
+        
+        let playerVC = PlayerScreenModule.build(playerItem, items: playterItems)
         present(playerVC, animated: true, completion: nil)
     }
 }
