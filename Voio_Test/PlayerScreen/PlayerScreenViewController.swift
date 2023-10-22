@@ -13,7 +13,7 @@ import MediaPlayer
 class PlayerScreenViewController: UIViewController {
     
     let viewModel : PlayerScreenViewModel
-    let playerButton = UIButton()
+    let dismissButton = UIButton()
     let playerView = YTPlayerView()
     let verticalStackView = UIStackView()
     let titleVideo = UILabel()
@@ -29,6 +29,7 @@ class PlayerScreenViewController: UIViewController {
     var isVideoPlaying = Bool()
     var sliderForSound = UISlider()
     
+    private var durationTimer: Timer?
 
     init(viewModel: PlayerScreenViewModel) {
         self.viewModel = viewModel
@@ -42,7 +43,7 @@ class PlayerScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setGradientBackground()
-        setupPlayerButton()
+        setupDismissButton()
         setupPlayerLabel()
         setupVerticalStackView()
         setupHorizontalStackView()
@@ -67,24 +68,24 @@ class PlayerScreenViewController: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
-    private func setupPlayerButton() {
-        playerButton.backgroundColor = .pinkColor
-        playerButton.layer.cornerRadius = 6
-        view.addSubview(playerButton)
-        playerButton.setImage(UIImage(named: "Close&Open"), for: .normal)
-        playerButton.addTarget(self, action: #selector(self.playerButtonTouched), for: .touchUpInside)
-        playerButton.translatesAutoresizingMaskIntoConstraints = false
+    private func setupDismissButton() {
+        dismissButton.backgroundColor = .pinkColor
+        dismissButton.layer.cornerRadius = 6
+        view.addSubview(dismissButton)
+        dismissButton.setImage(UIImage(named: "Close&Open"), for: .normal)
+        dismissButton.addTarget(self, action: #selector(self.dismissButtonTouched), for: .touchUpInside)
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            playerButton.topAnchor.constraint(equalTo: view.topAnchor),
-            playerButton.heightAnchor.constraint(equalToConstant: 45),
-            playerButton.widthAnchor.constraint(equalTo: view.widthAnchor)
+            dismissButton.topAnchor.constraint(equalTo: view.topAnchor),
+            dismissButton.heightAnchor.constraint(equalToConstant: 45),
+            dismissButton.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
         
-        playerButton.setNeedsLayout()
-        playerButton.layoutIfNeeded()
+        dismissButton.setNeedsLayout()
+        dismissButton.layoutIfNeeded()
     }
     
-    @objc func playerButtonTouched(_ playerButton: UIButton){
+    @objc func dismissButtonTouched(_ playerButton: UIButton){
         dismiss(animated: true, completion: nil)
         print("Touched")
     }
@@ -94,7 +95,7 @@ class PlayerScreenViewController: UIViewController {
         view.addSubview(playerView)
         playerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            playerView.topAnchor.constraint(equalTo: playerButton.bottomAnchor),
+            playerView.topAnchor.constraint(equalTo: dismissButton.bottomAnchor),
             playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             playerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -460)
@@ -135,6 +136,7 @@ class PlayerScreenViewController: UIViewController {
         
         verticalStackView.setCustomSpacing(20, after: sliderForVideo)
         
+        sliderForVideo.value = 0
     }
     
     @objc func changeSliderForVideo(sender: UISlider) {
@@ -228,10 +230,20 @@ class PlayerScreenViewController: UIViewController {
             playerView.pauseVideo()
             isVideoPlaying = false
             pauseVideoButton.setImage(UIImage(named: "Play"), for: .normal)
+            durationTimer?.invalidate()
         } else {
             playerView.playVideo()
             isVideoPlaying = true
             pauseVideoButton.setImage(UIImage(named: "Pause"), for: .normal)
+            
+            guard let duration = viewModel.videoData?.durationInSeconds else {
+                return
+            }
+            
+            durationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+                let step = 1.0 / duration
+                self?.sliderForVideo.value += Float(step)
+            })
         }
         print("Touched")
     }
@@ -269,16 +281,15 @@ class PlayerScreenViewController: UIViewController {
 
 extension PlayerScreenViewController: PlayerScreenViewModelDelegate {
     func displayVideoData(_ videoData: VideoData) {
-        guard let duration = videoData.data.contentDetails?.duration else {
+        guard let duration = videoData.durationInSeconds else {
             return
         }
         
-        let timeString = duration
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.unitsStyle = .positional
         
-        if let timeInterval = duration.parseDuration(), let timeStringFormatter = formatter.string(from: timeInterval) {
+        if let timeStringFormatter = formatter.string(from: duration) {
             print(timeStringFormatter)
             finishTimeLebel.text = timeStringFormatter
         }
@@ -299,5 +310,11 @@ extension String {
         let minutes = minutesRange.flatMap { Int(self[$0]) } ?? 0
         let seconds = secondsRange.flatMap { Int(self[$0]) } ?? 0
         return TimeInterval(hours * 3600 + minutes * 60 + seconds)
+    }
+}
+
+extension VideoData {
+    var durationInSeconds: TimeInterval? {
+        self.data.contentDetails?.duration?.parseDuration()
     }
 }

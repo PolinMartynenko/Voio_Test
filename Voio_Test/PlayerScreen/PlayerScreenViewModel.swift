@@ -11,6 +11,7 @@ import UIKit
 
 protocol PlayerScreenViewModel {
     var playerItem: PlayerItem { get }
+    var videoData: VideoData? { get }
     func viewDidLoad()
 }
 
@@ -20,6 +21,7 @@ protocol PlayerScreenViewModelDelegate: AnyObject {
 
 class PlayerScreenViewModelImplementation: PlayerScreenViewModel {
     var playerItem: PlayerItem
+    var videoData: VideoData?
     var model: PlayerScreenModel
     weak var delegate: PlayerScreenViewModelDelegate?
     
@@ -35,6 +37,7 @@ class PlayerScreenViewModelImplementation: PlayerScreenViewModel {
 
 extension PlayerScreenViewModelImplementation: PlayerScreenModelDelegate {
     func didLoadVideoData(_ videoData: VideoData) {
-        delegate?.displayVideoData(videoData)
+        self.videoData = videoData
+        self.delegate?.displayVideoData(videoData)
     }
 }
