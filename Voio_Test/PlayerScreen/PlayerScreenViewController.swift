@@ -29,6 +29,7 @@ class PlayerScreenViewController: UIViewController {
     var isVideoPlaying = Bool()
     var sliderForSound = UISlider()
     
+    private var currentDurationIsSeconds: TimeInterval = 0
     private var durationTimer: Timer?
 
     init(viewModel: PlayerScreenViewModel) {
@@ -142,6 +143,7 @@ class PlayerScreenViewController: UIViewController {
     @objc func changeSliderForVideo(sender: UISlider) {
         playerView.duration { duration, error in
             let seekTime = duration * Double(sender.value)
+            self.currentDurationIsSeconds = seekTime
             self.playerView.seek(toSeconds: Float(seekTime), allowSeekAhead: true)
         }
     }
@@ -165,7 +167,7 @@ class PlayerScreenViewController: UIViewController {
     }
     
     private func setupStartTimeLabel() {
-        startTimeLabel.text = "0:0"
+        startTimeLabel.text = "00:00"
         startTimeLabel.textColor = .white
         startTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         timeStackView.addArrangedSubview(startTimeLabel)
@@ -243,6 +245,8 @@ class PlayerScreenViewController: UIViewController {
             durationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
                 let step = 1.0 / duration
                 self?.sliderForVideo.value += Float(step)
+                self?.currentDurationIsSeconds += 1
+                self?.startTimeLabel.text = "\(DateComponentsFormatter.durationFromTimeInterval.string(from: self?.currentDurationIsSeconds ?? 0)!)"
             })
         }
         print("Touched")
@@ -285,12 +289,8 @@ extension PlayerScreenViewController: PlayerScreenViewModelDelegate {
             return
         }
         
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.unitsStyle = .positional
         
-        if let timeStringFormatter = formatter.string(from: duration) {
-            print(timeStringFormatter)
+        if let timeStringFormatter = DateComponentsFormatter.duration.string(from: duration) {
             finishTimeLebel.text = timeStringFormatter
         }
     }
@@ -316,5 +316,22 @@ extension String {
 extension VideoData {
     var durationInSeconds: TimeInterval? {
         self.data.contentDetails?.duration?.parseDuration()
+    }
+}
+
+extension DateComponentsFormatter {
+    static var duration: DateComponentsFormatter {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+        return formatter
+    }
+    
+    static var durationFromTimeInterval: DateComponentsFormatter {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
     }
 }
