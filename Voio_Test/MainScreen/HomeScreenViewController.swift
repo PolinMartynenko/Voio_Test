@@ -94,13 +94,20 @@ class HomeScreenViewController: UIViewController {
     }
     
     @objc func playerButtonTouched(_ playerButton: UIButton){
-        guard let item = viewModel.selectedItem else {
+        guard let videoId = viewModel.selectedItem?.playlist.identifier?.videoId else {
             return
         }
         
-//        let playerVC = PlayerScreenModule.build(item, playerItem)
-//        present(playerVC, animated: true, completion: nil)
-//        print("Touched")
+        let playerItem = PlayerItem(videoId: videoId)
+        let playterItems = viewModel.selectedSectionItems.compactMap { playlistItem -> PlayerItem? in
+            guard let videoID = playlistItem.playlist.identifier?.videoId else {
+                return nil
+            }
+            
+            return PlayerItem(videoId: videoID)
+        }
+        let playerVC = PlayerScreenModule.build(playerItem, items: playterItems)
+        present(playerVC, animated: true, completion: nil)
     }
     
     func setupCollectionView() {
@@ -272,6 +279,7 @@ extension HomeScreenViewController: UICollectionViewDelegate {
         }
         
         item = items[indexPath.row]
+        viewModel.selectedSectionItems = items
         viewModel.selectedItem = item
         
         guard let item = viewModel.selectedItem,

@@ -13,6 +13,7 @@ protocol HomeScreenViewModel {
     var secondSectionItems: [PlaylistlItem] { get }
     var thirdSectionItems: [PlaylistlItem] { get }
     var selectedItem: PlaylistlItem? { get set }
+    var selectedSectionItems: [PlaylistlItem] { get set }
     
     func viewDidLoad()
 }
@@ -28,6 +29,7 @@ class HomeScreenViewModelImplementation: HomeScreenViewModel {
     var firstSectionItems: [PlaylistlItem] = []
     var secondSectionItems: [PlaylistlItem] = []
     var thirdSectionItems: [PlaylistlItem] = []
+    var selectedSectionItems: [PlaylistlItem] = []
     var selectedItem: PlaylistlItem?
     
     init(model: HomeScreenModel) {
