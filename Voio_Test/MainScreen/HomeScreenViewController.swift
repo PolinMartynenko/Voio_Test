@@ -39,6 +39,9 @@ class HomeScreenViewController: UIViewController {
 //        searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = searchScreenVC
         searchController.searchBar.placeholder = "Search playlists"
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.barTintColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.white
         
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = .darkBackgroundColor
@@ -299,5 +302,13 @@ extension HomeScreenViewController: UICollectionViewDelegate {
         
         let playerVC = PlayerScreenModule.build(playerItem, items: playterItems)
         present(playerVC, animated: true, completion: nil)
+    }
+}
+
+extension UISearchBar {
+    func setTextColor(color: UIColor) {
+        let svs = subviews.flatMap { $0.subviews }
+        guard let tf = (svs.filter { $0 is UITextField }).first as? UITextField else { return }
+        tf.textColor = color
     }
 }
