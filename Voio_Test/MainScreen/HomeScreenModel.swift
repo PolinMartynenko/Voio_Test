@@ -70,7 +70,9 @@ class HomeScreenModelImplementation: HomeScreenModel {
                     return PlaylistlItem(playlist: playlist, channelInfo: channel)
                 })
                 
-                completion(items)
+                DispatchQueue.main.async {
+                    completion(items)
+                }
             }
         }
     }
@@ -88,7 +90,9 @@ class HomeScreenModelImplementation: HomeScreenModel {
                 return
             }
             
-            completion(listResponse.items ?? [])
+            DispatchQueue.main.async {
+                completion(listResponse.items ?? [])
+            }
         }
     }
 
